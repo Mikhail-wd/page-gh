@@ -1,0 +1,1734 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+h1 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 73px;
+  color: #000000;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 49px;
+  color: #000000;
+}
+
+body {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.upper-line {
+  margin-top: 34px;
+  width: 74px;
+  border-bottom: solid 5px #E33E54;
+}
+
+.popUp {
+  display: block;
+  z-index: 999;
+  width: 100%;
+  height: 110%;
+  overflow: hidden;
+  position: fixed;
+  background-color: #B1B1B1;
+  opacity: 0.91;
+}
+.popUp div {
+  opacity: 1;
+  margin-left: 35%;
+  margin-top: 15%;
+  max-width: 400px;
+  min-height: 178px;
+  border: solid #4C858B 4px;
+  background-color: #4C858B;
+  border-radius: 15px;
+  font-family: serif;
+}
+.popUp div P {
+  padding: 2%;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 25px;
+  color: #000000;
+}
+
+.helping {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+header {
+  display: inline-block;
+  float: left;
+  float: none;
+  width: 1920px;
+  height: 139px;
+}
+header img,
+header nav,
+header div,
+header a,
+header p {
+  display: inline-block;
+  float: left;
+}
+header img:nth-child(1) {
+  margin: 26px 52px 26px 63px;
+  width: 100px;
+  height: 97px;
+}
+header img:nth-child(2) {
+  margin-top: 48px;
+  width: 56px;
+  height: 56px;
+  transition: width 0.2s, height 0.2s;
+}
+header img:nth-child(2):hover {
+  width: 63px;
+  height: 63px;
+}
+header nav {
+  margin: 64px 31px;
+  width: 665px;
+  height: 23px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+header nav p {
+  color: #4C858B;
+  text-transform: uppercase;
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 23px;
+  margin-right: 37px;
+  transition: font-size 0.2s, color 0.2s;
+}
+header nav p:hover {
+  display: block;
+  color: #123112;
+  font-size: 15px;
+  border-bottom: solid 0.5px #123112;
+}
+header div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 27px;
+  margin-top: 47px;
+}
+header div p {
+  color: #4C858B;
+  text-transform: uppercase;
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 23px;
+  margin-right: 37px;
+}
+header div p span {
+  text-transform: uppercase;
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #000000;
+}
+header div a {
+  color: #AE2236;
+  text-transform: uppercase;
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  margin-left: 36px;
+  text-decoration: none;
+  padding: 0;
+  padding-bottom: 5px;
+  padding-bottom: 2px;
+  border-bottom: 1px dashed #AE2236;
+}
+header div .headers-icons-social {
+  margin: 0;
+}
+header div .headers-icons-social img {
+  margin: 0;
+  margin-left: 13px;
+  width: 20px;
+  height: 16px;
+}
+header div .headers-icons-social img:first-child {
+  margin-left: 63px;
+}
+header div .settings-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 260px;
+  height: 60px;
+  margin: 0;
+}
+header div .settings-box img {
+  margin: 0;
+  margin-left: 15px;
+  width: 56px;
+  height: 56px;
+  transition: width 0.2s, height 0.2s;
+}
+header div .settings-box img:hover {
+  width: 63px;
+  height: 63px;
+}
+header div .settings-box img:first-child {
+  margin-left: 56px;
+}
+header div .settings-box p {
+  background-color: #AE2236;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 13px;
+  color: #FFFFFF;
+  border-radius: 20px;
+  padding: 4px;
+  letter-spacing: 0;
+  letter-spacing: 0;
+  position: relative;
+  top: -17px;
+  right: 18px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1920px;
+  height: 4350px;
+  margin-left: 0px;
+  margin-top: -3px;
+}
+.content .navigation {
+  width: 1222px;
+  margin-left: 3px;
+}
+.content .navigation div {
+  width: 1218px;
+  height: 47px;
+  border-bottom: 1px solid #E5E5E5;
+  border-top: 1px solid #E5E5E5;
+}
+.content .navigation div img {
+  display: inline-block;
+  float: left;
+  margin-top: 18px;
+  margin-left: 7px;
+  margin-right: 5px;
+}
+.content .navigation div p {
+  display: inline-block;
+  float: left;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #B1B1B1;
+  margin-top: 14px;
+}
+.content .navigation div P:last-child {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #4C858B;
+}
+.content .list-of-respond {
+  width: 1222px;
+  margin-top: 66px;
+  margin-left: 3px;
+}
+.content .list-of-respond h2 {
+  width: 580px;
+  font-size: 39.4px;
+  margin-top: 50px;
+  line-height: 58px;
+}
+.content .list-of-respond h2 span {
+  font-size: 70px;
+  color: #AE2236;
+  font-size: 50.2px;
+  text-transform: uppercase;
+}
+.content .list-of-respond p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  color: #000000;
+}
+.content .list-of-respond p span {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 30px;
+  color: #AE2236;
+  margin-right: 3px;
+}
+.content .list-of-respond ul {
+  display: inline-block;
+  float: left;
+  width: 510px;
+  margin-top: -20px;
+  margin-left: 7px;
+  list-style: none;
+}
+.content .list-of-respond ul li {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23.3px;
+  margin-top: 25px;
+  color: #000000;
+}
+.content .list-of-respond ul li img {
+  position: relative;
+  left: -18px;
+}
+.content .list-of-respond ul li span {
+  margin-left: 4px;
+}
+.content .list-of-respond div {
+  float: right;
+  width: 500px;
+  height: 500px;
+  margin-top: -699px;
+}
+.content .list-of-respond div .dots_bott {
+  position: relative;
+  left: 560px;
+  top: 423px;
+}
+.content .list-of-respond div .dots_top {
+  position: relative;
+  left: -6px;
+  top: 0px;
+}
+.content .list-of-respond div .triangle_main {
+  position: relative;
+  left: -173px;
+  top: 16px;
+}
+.content .list-of-respond div .triangle {
+  position: relative;
+  left: 412px;
+  top: -77px;
+}
+.content .list-of-respond div .blob {
+  position: relative;
+  left: 71px;
+  top: -185px;
+}
+.content .list-of-respond div .dimohod {
+  position: relative;
+  left: -109px;
+  top: 541px;
+}
+.content .install-process {
+  width: 1222px;
+  margin-top: 66px;
+  margin-left: 3px;
+}
+.content .install-process h3 {
+  margin: 0;
+  letter-spacing: -0.3px;
+  margin-top: 10px;
+}
+.content .install-process .chek-list {
+  width: 1245px;
+  height: 302px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: 48px;
+}
+.content .install-process .chek-list div {
+  width: 600px;
+  height: 79px;
+  margin-bottom: 20px;
+}
+.content .install-process .chek-list p:first-child {
+  width: 55px;
+  height: 100px;
+  margin: 0;
+  float: left;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 70px;
+  line-height: 85px;
+  color: #E33E54;
+  opacity: 0.2;
+  padding: 0;
+}
+.content .install-process .chek-list p {
+  width: 545px;
+  height: 100px;
+  margin: 0;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  color: #000000;
+  margin-left: 72px;
+  margin-top: 31px;
+}
+.content .install-process .chek-list .second {
+  margin: 0;
+  margin-left: 80px;
+  margin-top: 25px;
+}
+.content .install-process .chek-list .third {
+  margin: 0;
+  margin-left: 80px;
+  margin-top: 10px;
+}
+.content .install-process .chek-list .four {
+  margin: 0;
+  margin-left: 69px;
+  margin-top: 32px;
+}
+.content .install-process .chek-list .five {
+  margin: 0;
+  margin-left: 78px;
+  margin-top: 16px;
+}
+.content .install-process .chek-list .six {
+  margin: 0;
+  margin-left: 77px;
+  margin-top: 23px;
+}
+.content .questions {
+  width: 1222px;
+  margin-left: 1px;
+}
+.content .questions .upper-line {
+  margin-top: 68px;
+}
+.content .questions h4 {
+  margin-top: 11px;
+  font-size: 39.5px;
+}
+.content .questions p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  color: #000000;
+  margin-top: -3px;
+  margin-left: 4px;
+}
+.content .questions .owerwatch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 1222px;
+}
+.content .questions .owerwatch div:first-child {
+  width: 360px;
+  height: 268px;
+  margin-left: 0px;
+}
+.content .questions .owerwatch div:first-child div p {
+  margin-top: -24px;
+  padding-bottom: 8px;
+  margin-left: -55px;
+}
+.content .questions .owerwatch div:first-child div p span {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 30px;
+  color: #AE2236;
+}
+.content .questions .owerwatch div {
+  width: 360px;
+  height: 268px;
+  margin-top: 35px;
+  margin-left: 57px;
+}
+.content .questions .owerwatch div p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+  margin-top: 28px;
+  margin-left: 0px;
+}
+.content .questions .owerwatch div p:nth-child(3) {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  color: #000000;
+  margin-top: -8px;
+  width: 380px;
+}
+.content .questions .owerwatch div div p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  color: #000000;
+}
+.content .consalting {
+  width: 1000px;
+  margin-top: 20px;
+}
+.content .consalting div {
+  margin-top: 36px;
+  margin-left: 398px;
+}
+.content .consalting div img {
+  margin-right: 36px;
+}
+.content .consalting p:first-child {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+  letter-spacing: 0.45px;
+}
+.content .consalting p:nth-child(2) {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 30px;
+  color: #000000;
+  margin-top: -34px;
+  margin-left: 171px;
+  letter-spacing: 0.39px;
+}
+.content .consalting p:nth-child(2)::before {
+  content: "И с ";
+}
+.content .consalting .form-for-report {
+  width: 866px;
+  height: 260px;
+  left: -332px;
+  top: -54px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+.content .consalting .form-for-report .me {
+  display: block;
+  width: 866px;
+  height: 260px;
+}
+.content .consalting .form-for-report input {
+  width: 216px;
+  height: 51px;
+  margin-left: 6px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #B1B1B1;
+  position: relative;
+  left: 48px;
+  margin-right: 13px;
+  top: -115px;
+  padding-left: 18px;
+  padding-top: 3px;
+}
+.content .consalting .form-for-report button {
+  width: 240px;
+  height: 56px;
+  border-radius: 4px;
+  background-color: #4C858B;
+  float: right;
+  margin-right: 55px;
+  margin-top: -113px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #FFFFFF;
+}
+.content .consalting .form-for-report button::before {
+  content: "Отправить";
+}
+.content .consalting .form-for-report p {
+  width: 866px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+  margin-top: 84px;
+  margin-left: 58px;
+  text-align: start;
+  text-transform: none;
+  letter-spacing: 0.39px;
+  padding-top: 57px;
+}
+.content .consalting .form-for-report p span {
+  color: orange;
+}
+.content .consalting .form-for-report p:last-child {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  color: #000000;
+  margin-top: -68px;
+  margin-left: 58px;
+  text-align: start;
+  text-transform: none;
+  letter-spacing: 0.1px;
+}
+.content .install-video {
+  margin: 0;
+  padding: 0;
+  width: 1224px;
+  height: 500px;
+}
+.content .install-video .upper-line {
+  margin-top: 58px;
+  width: 74px;
+  border-bottom: solid 5px #E33E54;
+}
+.content .install-video h5 {
+  margin: 0;
+  margin-top: 35px;
+  margin-top: 12px;
+  letter-spacing: -0.4px;
+}
+.content .install-video p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  color: #000000;
+  margin-top: 65px;
+  margin-left: 3px;
+}
+.content .install-video iframe {
+  width: 771px;
+  height: 438px;
+  position: relative;
+  left: 217px;
+  top: -314px;
+}
+.content .install-video div {
+  width: 1200px;
+  margin: 0;
+}
+.content .install-video img:nth-child(1) {
+  position: relative;
+  top: 49px;
+  left: 35px;
+}
+.content .install-video img:nth-child(2) {
+  position: relative;
+  top: 49px;
+  left: 82px;
+  width: 633px;
+}
+.content .install-video img:nth-child(3) {
+  position: relative;
+  top: 44px;
+  left: -1015px;
+  height: 128px;
+}
+.content .install-video img:nth-child(4) {
+  position: relative;
+  top: -232px;
+  left: -67px;
+  height: 127px;
+}
+.content .photo-of-works {
+  margin: 0;
+  padding: 0;
+  margin-top: 358px;
+  width: 1224px;
+  height: 500px;
+}
+.content .photo-of-works div:first-child .upper-line {
+  margin-top: 58px;
+  width: 74px;
+  border-bottom: solid 5px #E33E54;
+}
+.content .photo-of-works div:first-child h6 {
+  margin: 0;
+  margin-top: 35px;
+  margin-top: 12px;
+  letter-spacing: -0.4px;
+  word-spacing: 1px;
+}
+.content .photo-of-works div:first-child p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  color: #000000;
+  margin-top: 65px;
+  margin-left: 3px;
+}
+.content .photo-of-works div.pictures-of-works {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: flex-start;
+  width: 1248px;
+  margin: 50px auto;
+  flex-wrap: wrap;
+}
+.content .photo-of-works div.pictures-of-works div {
+  margin-right: 30px;
+  margin-bottom: 30px;
+  width: 282px;
+  height: 260px;
+  transition: transform 0.4s;
+}
+.content .photo-of-works div.pictures-of-works div:hover {
+  transform: scale(1.1, 1.1);
+}
+.content .photo-of-works div.pictures-of-works div img {
+  width: 300px;
+  height: 280px;
+  position: relative;
+  float: left;
+  left: -6px;
+  top: -9px;
+}
+.content .photo-of-works div.pictures-of-works div div:nth-child(2) {
+  margin: 0;
+  width: 50px;
+  height: 50px;
+  border-left: solid 4px #4C858B;
+  border-bottom: solid 4px #4C858B;
+  position: relative;
+  top: 204px;
+  left: 3px;
+}
+.content .photo-of-works div.pictures-of-works div div:nth-child(3) {
+  margin: 0;
+  width: 50px;
+  height: 50px;
+  border-top: solid 4px #4C858B;
+  border-right: solid 4px #4C858B;
+  position: relative;
+  left: 230px;
+  top: -57px;
+}
+
+footer {
+  display: inline-block;
+  float: left;
+  background-color: #0C2F33;
+  width: 1920px;
+  height: 350px;
+  float: none;
+  margin-top: 118px;
+  margin-bottom: -200px;
+}
+footer .footer-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: none;
+  margin: 30px auto;
+  justify-content: center;
+}
+footer .footer-content div {
+  width: 378px;
+  margin: 10px 10px;
+  text-align: left;
+  position: relative;
+  left: -10px;
+}
+footer .footer-content div div:first-child {
+  width: 100%;
+  height: 0;
+  margin: 0;
+}
+footer .footer-content div div:first-child p {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 27px;
+  color: #FFFFFF;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+footer .footer-content div div:last-child {
+  width: 100px;
+  height: 100px;
+  margin: 20px 5px;
+  margin: 0;
+}
+footer .footer-content div div:last-child table {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  margin-top: 36px;
+  margin-left: -5px;
+  width: 445px;
+  height: 142px;
+  transition: transform 0.2s, color 0.2s, font-weight 0.4s;
+}
+footer .footer-content div div:last-child table td:hover {
+  color: #2980ac;
+  font-weight: 800;
+}
+footer .footer-content div:nth-child(1) {
+  width: 378px;
+  margin: 10px 10px;
+  text-align: left;
+  position: relative;
+}
+footer .footer-content div:nth-child(2) div p {
+  position: relative;
+  left: 40px;
+}
+footer .footer-content div:nth-child(2) div table {
+  width: 400px;
+  position: relative;
+  left: 41px;
+}
+footer .footer-content div:nth-child(3) {
+  left: 10px;
+}
+footer .footer-content div:nth-child(3) div:nth-child(1) P {
+  position: relative;
+  left: 94px;
+  top: 21px;
+  letter-spacing: 0px;
+}
+footer .footer-content div:nth-child(3) div:nth-child(2) img:nth-child(1) {
+  position: relative;
+  left: 84px;
+  top: 59px;
+}
+footer .footer-content div:nth-child(3) div:nth-child(2) img:nth-child(3) {
+  position: relative;
+  left: 81px;
+  top: 51px;
+}
+footer .footer-content div:nth-child(3) div:nth-child(2) p:nth-child(2) {
+  margin-top: -7px;
+  margin-left: 45px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  letter-spacing: 0.37px;
+  position: relative;
+  top: 48px;
+  left: 59px;
+}
+footer .footer-content div:nth-child(3) div:nth-child(2) p:nth-child(2) span {
+  font-family: "Lato";
+  color: #4C858B;
+  font-size: 14px;
+  position: relative;
+  bottom: 0px;
+  left: 2px;
+}
+footer .footer-content div:nth-child(3) div:nth-child(2) p:nth-child(4) {
+  margin-top: -17px;
+  margin-left: 45px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  letter-spacing: 0px;
+  position: relative;
+  top: 48px;
+  left: 61px;
+}
+footer .footer-content div:nth-child(3) div:nth-child(2) p:nth-child(4) span {
+  font-family: "Lato";
+  color: #4C858B;
+  font-size: 14px;
+  position: relative;
+  bottom: 0px;
+  left: 2px;
+}
+footer .footer-content div:nth-child(3) div:nth-child(3) {
+  position: relative;
+  top: 63px;
+  left: 55px;
+  width: 232px;
+  text-align: start;
+}
+footer .footer-content div:nth-child(3) div:nth-child(3) img {
+  width: 23px;
+  margin-left: 32px;
+}
+
+@media screen and (max-width: 768px) {
+  .helping {
+    display: none;
+  }
+  h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    height: 65px;
+    font-size: 43px;
+    letter-spacing: 1.25px;
+  }
+  header img:nth-child(1) {
+    margin: 26px 52px 26px 16px;
+    width: 64px;
+    height: 62px;
+  }
+  header img:nth-child(2) {
+    margin-left: 565px;
+    margin-top: 33px;
+    width: 56px;
+    height: 56px;
+  }
+  header nav {
+    display: none;
+  }
+  header div .settings-box {
+    margin-left: -379px;
+    margin-top: -18px;
+  }
+  header div .settings-box p {
+    display: block;
+    top: -15px;
+    right: 27px;
+  }
+  header div .settings-box img {
+    margin-right: 9px;
+  }
+  header div p,
+header div a,
+header div div:nth-child(3) {
+    display: none;
+  }
+  .content {
+    width: 768px;
+  }
+  .content .navigation,
+.content .list-of-respond,
+.content .install-process,
+.content .questions,
+.content .consalting,
+.content .install-video,
+.content .photo-of-works {
+    width: 768px;
+    margin-left: 33px;
+    margin-top: -9px;
+  }
+  .content .navigation div {
+    width: 720px;
+  }
+  .content .list-of-respond {
+    z-index: -5;
+    margin-top: 43px;
+  }
+  .content .list-of-respond h2 {
+    font-size: 27.3px;
+    margin-top: 19px;
+    line-height: 50px;
+  }
+  .content .list-of-respond h2 span {
+    font-size: 38.4px;
+  }
+  .content .list-of-respond ul {
+    margin-top: 10px;
+    width: 675px;
+  }
+  .content .list-of-respond div {
+    display: none;
+  }
+  .content .install-process {
+    z-index: -4;
+    margin-top: 3px;
+    margin-left: 27.7px;
+  }
+  .content .install-process h3 {
+    font-size: 29.1px;
+    letter-spacing: 0.4px;
+    line-height: 40px;
+  }
+  .content .install-process .chek-list {
+    margin-top: -13px;
+    width: 768px;
+  }
+  .content .install-process .chek-list div {
+    width: 378px;
+    height: 57px;
+    margin-bottom: 20px;
+  }
+  .content .install-process .chek-list div p:nth-child(1) {
+    width: 15px;
+    font-size: 45px;
+    padding-top: 4px;
+    padding-left: 5px;
+  }
+  .content .install-process .chek-list div p {
+    width: 365px;
+    height: 0;
+    font-size: 16px;
+    margin-left: 36px;
+    margin-top: 31px;
+    letter-spacing: -1.2px;
+  }
+  .content .install-process .chek-list div:nth-child(2) p:nth-child(1) {
+    margin-top: -6px;
+  }
+  .content .install-process .chek-list div:nth-child(3) p:nth-child(1) {
+    margin-top: 12px;
+  }
+  .content .install-process .chek-list div:nth-child(5) p:nth-child(1) {
+    margin-top: -7px;
+  }
+  .content .install-process .chek-list div:nth-child(6) p:nth-child(1) {
+    margin-top: 11px;
+  }
+  .content .install-process .chek-list .second {
+    margin-left: 41px;
+    margin-top: 26.6px;
+    line-height: 25.2px;
+    width: 300px;
+  }
+  .content .install-process .chek-list .third {
+    margin-left: 41px;
+    margin-top: 36.6px;
+    line-height: 25.2px;
+    width: 300px;
+  }
+  .content .install-process .chek-list .four {
+    margin-left: 47px;
+    margin-top: 22.6px;
+    line-height: 25.2px;
+    width: 300px;
+  }
+  .content .install-process .chek-list .five {
+    margin-left: 48px;
+    margin-top: 16px;
+    width: 350px;
+    line-height: 27px;
+  }
+  .content .install-process .chek-list .six {
+    margin-left: 48px;
+    margin-top: 35px;
+    width: 350px;
+    line-height: 27px;
+  }
+  .content .questions {
+    margin-top: -47px;
+    margin-left: 29px;
+  }
+  .content .questions h4 {
+    font-size: 27.2px;
+    margin-top: 6px;
+    letter-spacing: 1.5px;
+  }
+  .content .questions p {
+    margin-top: -22px;
+    margin-left: 1px;
+  }
+  .content .questions .owerwatch {
+    width: 768px;
+    height: 500px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+  }
+  .content .questions .owerwatch div:nth-child(1) {
+    position: inherit;
+    width: 320px;
+    height: 0px;
+    margin-left: 0px;
+    text-align: center;
+  }
+  .content .questions .owerwatch div:nth-child(1) div:nth-child(3) {
+    position: inherit;
+    font-size: 18.1px;
+    margin-top: 22px;
+    margin-left: 5px;
+  }
+  .content .questions .owerwatch div:nth-child(1) div:nth-child(3) p {
+    font-size: 14.1px;
+    margin-top: -24px;
+    padding-bottom: 8px;
+    margin-left: -35.9px;
+    word-spacing: 3.2px;
+  }
+  .content .questions .owerwatch div:nth-child(1) div:nth-child(3) p span {
+    font-size: 14.1px;
+    font-weight: 400;
+  }
+  .content .questions .owerwatch div:nth-child(1) p {
+    font-size: 18.1px;
+    margin-top: 22px;
+    margin-left: 5px;
+  }
+  .content .questions .owerwatch div:nth-child(2) {
+    position: relative;
+    top: -1px;
+    left: -14px;
+  }
+  .content .questions .owerwatch div:nth-child(2) img {
+    position: relative;
+    left: 144px;
+  }
+  .content .questions .owerwatch div:nth-child(2) p {
+    font-size: 18px;
+    line-height: 30px;
+    color: #000000;
+    margin-top: 28px;
+    margin-left: 46.3px;
+    margin-top: 22.1px;
+  }
+  .content .questions .owerwatch div:nth-child(2) p:nth-child(3) {
+    font-size: 14px;
+    margin-left: 7.9px;
+    margin-top: -13.8px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    line-height: 25.6px;
+    width: 352.7px;
+    letter-spacing: 0px;
+  }
+  .content .questions .owerwatch div:nth-child(3) {
+    position: relative;
+    top: -60px;
+    left: -46px;
+  }
+  .content .questions .owerwatch div:nth-child(3) img {
+    position: relative;
+    left: 144px;
+  }
+  .content .questions .owerwatch div:nth-child(3) p {
+    font-size: 18px;
+    line-height: 30px;
+    color: #000000;
+    margin-top: 22px;
+    margin-left: 46.3px;
+    margin-top: 19.1px;
+  }
+  .content .questions .owerwatch div:nth-child(3) p:nth-child(3) {
+    font-size: 14px;
+    margin-left: 7.9px;
+    margin-top: -15.5px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    line-height: 25.6px;
+    width: 352.7px;
+    letter-spacing: 0px;
+  }
+  .content .consalting p:nth-child(1) {
+    font-size: 40px;
+    letter-spacing: 0.4px;
+    margin-left: -33.4px;
+    margin-top: 42.5px;
+  }
+  .content .consalting p:nth-child(2) {
+    font-size: 16px;
+    letter-spacing: -0.1px;
+    margin-left: 127px;
+  }
+  .content .consalting p:nth-child(2)::before {
+    content: " ";
+  }
+  .content .consalting div {
+    margin-top: 25px;
+    margin-left: 264px;
+  }
+  .content .consalting .form-for-report {
+    width: 738px;
+    height: 388px;
+    left: -266px;
+    top: -13px;
+  }
+  .content .consalting .form-for-report .me {
+    position: relative;
+    top: -14.6px;
+  }
+  .content .consalting .form-for-report .me p:nth-child(1) {
+    font-size: 20.4px;
+    letter-spacing: 0.2px;
+    margin-left: 174.4px;
+    margin-top: 47.5px;
+  }
+  .content .consalting .form-for-report .me p:nth-child(2) {
+    margin-top: -68.7px;
+    margin-left: 209.5px;
+    text-align: start;
+    text-transform: none;
+    letter-spacing: 0px;
+  }
+  .content .consalting .form-for-report .me p:nth-child(2)::before {
+    content: "И с ";
+  }
+  .content .consalting .form-for-report input {
+    width: 327px;
+    margin-bottom: 20px;
+    height: 45px;
+    margin-left: 6px;
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    color: #B1B1B1;
+    position: relative;
+    left: 188px;
+    margin-right: 13px;
+    top: -127px;
+    padding-left: 18px;
+    padding-top: 3px;
+  }
+  .content .consalting .form-for-report button {
+    background-color: #215359;
+    border-radius: 4px;
+    margin-right: 251px;
+    margin-top: -122px;
+  }
+  .content .consalting .form-for-report button::before {
+    content: "оставить заявку";
+  }
+  .content .install-video {
+    width: 768px;
+    margin-top: -32px;
+    margin-left: 30px;
+  }
+  .content .install-video h5 {
+    font-size: 31.6px;
+    letter-spacing: -1.3px;
+    margin-top: 3.2px;
+    margin-left: -0.2px;
+  }
+  .content .install-video p {
+    margin-top: 13.6px;
+    margin-left: 3px;
+    text-align: left;
+    width: 745px;
+  }
+  .content .install-video div img {
+    display: none;
+  }
+  .content .install-video div iframe {
+    position: relative;
+    left: 3px;
+    top: 18px;
+    width: 735px;
+    height: 420px;
+  }
+  .content .photo-of-works {
+    margin-top: 276px;
+    margin-left: 31px;
+  }
+  .content .photo-of-works div:first-child h6 {
+    font-size: 30px;
+    letter-spacing: -0.5px;
+    margin-top: 3px;
+    margin-left: 0px;
+  }
+  .content .photo-of-works div:first-child p {
+    margin-left: 3px;
+    margin-top: 14px;
+    width: 748px;
+  }
+  .content .photo-of-works div.pictures-of-works {
+    width: 775px;
+    margin: 40px auto 50px -4px;
+    flex-wrap: wrap;
+  }
+  .content .photo-of-works div.pictures-of-works div {
+    margin-right: 30px;
+    margin-bottom: 30px;
+    width: 226px;
+    height: 208px;
+  }
+  .content .photo-of-works div.pictures-of-works div img {
+    width: 242.3px;
+    height: 223.8px;
+  }
+  .content .photo-of-works div.pictures-of-works div div:nth-child(2) {
+    top: 149px;
+    left: 2px;
+  }
+  .content .photo-of-works div.pictures-of-works div div:last-child {
+    left: 175px;
+    top: -59px;
+  }
+  footer {
+    width: 768px;
+    height: 69px;
+    margin-top: 75px;
+  }
+  footer .footer-content {
+    height: 0px;
+    height: 0px;
+  }
+  footer .footer-content div:nth-child(1) {
+    display: none;
+  }
+  footer .footer-content div:nth-child(2) {
+    display: none;
+  }
+  footer .footer-content div:nth-child(3) {
+    height: 0px;
+  }
+  footer .footer-content div:nth-child(3) div:nth-child(3) {
+    height: 0px;
+    top: -8px;
+    left: 46px;
+    width: 232px;
+  }
+  .popUp div {
+    margin-left: 22%;
+    margin-top: 22%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .popUp div {
+    margin-left: 0%;
+    right: 0%;
+    margin-top: 22%;
+  }
+  header img:nth-child(1) {
+    width: 50px;
+    height: 50px;
+    margin-left: 14px;
+    margin-top: 14px;
+  }
+  header img:nth-child(2) {
+    margin-left: 144px;
+    margin-top: 16px;
+    width: 46px;
+    height: 46px;
+  }
+  header div .settings-box {
+    margin-left: -155x;
+    margin-top: -38px;
+  }
+  header div .settings-box img {
+    display: none;
+  }
+  header div .settings-box p:nth-child(4) {
+    display: block;
+    top: -9px;
+  }
+  header div .settings-box img:nth-child(3) {
+    margin-left: 238px;
+    display: block;
+    width: 48px;
+    height: 48px;
+    top: -10px;
+    right: 25px;
+  }
+  .content {
+    width: 320px;
+  }
+  .content .navigation {
+    width: 320px;
+    margin-left: 33px;
+    margin-top: -38px;
+  }
+  .content .navigation h1 {
+    font-size: 30px;
+    line-height: 35px;
+    letter-spacing: 0;
+  }
+  .content .navigation div {
+    width: 288px;
+    margin-top: -2px;
+  }
+  .content .navigation div p {
+    height: 48px;
+    margin-top: 5px;
+  }
+  .content .navigation div img {
+    margin-top: 10px;
+  }
+  .content .list-of-respond {
+    width: 288px;
+    margin-top: -19.7px;
+    margin-left: 3px;
+  }
+  .content .list-of-respond p {
+    line-height: 25.6px;
+    font-size: 13.9px;
+  }
+  .content .list-of-respond p span {
+    font-size: 13.4px;
+  }
+  .content .list-of-respond h2 {
+    font-size: 15.6px;
+    margin-top: 20.3px;
+    line-height: 33.7px;
+    margin-left: -3px;
+    width: 288px;
+  }
+  .content .list-of-respond h2 span {
+    font-size: 27.1px;
+    letter-spacing: 2.1px;
+  }
+  .content .list-of-respond ul {
+    margin-top: -17px;
+    width: 274.3px;
+    margin-left: -11px;
+    letter-spacing: -1.2px;
+  }
+  .content .install-process {
+    width: 288px;
+    height: 500px;
+    margin-top: 38px;
+    margin-left: -1px;
+  }
+  .content .install-process h3 {
+    font-size: 19.1px;
+    letter-spacing: 0.4px;
+    line-height: 30.2px;
+  }
+  .content .install-process .chek-list {
+    height: 581px;
+    width: 288px;
+  }
+  .content .install-process .chek-list div:nth-child(4) p:nth-child(1) {
+    margin-top: 40px;
+    margin-left: -5px;
+  }
+  .content .install-process .chek-list div:nth-child(5) p:nth-child(1) {
+    margin-top: 41px;
+    margin-left: -1px;
+  }
+  .content .install-process .chek-list div:nth-child(6) p:nth-child(1) {
+    margin-top: 87px;
+    margin-left: -3px;
+  }
+  .content .install-process .chek-list div:nth-child(3) p:nth-child(1) {
+    margin-top: -7.2px;
+    margin-left: -1.2px;
+  }
+  .content .install-process .chek-list div {
+    width: 305.8px;
+    height: 49px;
+    margin-bottom: 20.5px;
+  }
+  .content .install-process .chek-list div p {
+    width: 196px;
+    height: 0;
+    font-size: 16px;
+    margin-left: 46.4px;
+    margin-top: 26.9px;
+    letter-spacing: -1.2px;
+    line-height: 26.2px;
+  }
+  .content .install-process .chek-list .second {
+    margin-left: 44.8px;
+    margin-top: 19.7px;
+    line-height: 25.2px;
+    width: 218.8px;
+  }
+  .content .install-process .chek-list .third {
+    margin-left: 44.3px;
+    margin-top: 16.4px;
+    line-height: 25.5px;
+    width: 232.5px;
+  }
+  .content .install-process .chek-list .four {
+    margin-left: 46px;
+    margin-top: 63.6px;
+    line-height: 25.2px;
+    width: 238px;
+  }
+  .content .install-process .chek-list .five {
+    margin-left: 47px;
+    margin-top: 62.1px;
+    width: 230px;
+    line-height: 25.3px;
+    font-size: 15.7px;
+  }
+  .content .install-process .chek-list .six {
+    margin-left: 46px;
+    margin-top: 110px;
+    width: 350px;
+    line-height: 27px;
+  }
+  .content .questions {
+    width: 288px;
+    margin-top: 88px;
+    margin-left: -2px;
+  }
+  .content .questions h4 {
+    font-size: 17.5px;
+    margin-top: 1.6px;
+    letter-spacing: 1.5px;
+  }
+  .content .questions p {
+    margin-top: -25.9px;
+    margin-left: -0.3px;
+    font-size: 14.1px;
+    line-height: 26.5px;
+  }
+  .content .questions .owerwatch {
+    width: 288px;
+    height: 808px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .content .questions .owerwatch div:nth-child(1) {
+    width: 290px;
+    margin-top: -8px;
+    height: 173px;
+    margin-left: -127px;
+  }
+  .content .questions .owerwatch div:nth-child(1) div:nth-child(3) {
+    position: inherit;
+    font-size: 18.1px;
+    margin-top: 22px;
+    margin-left: -14px;
+  }
+  .content .questions .owerwatch div:nth-child(1) p {
+    font-size: 18.1px;
+    margin-top: 13px;
+    margin-left: 0px;
+    letter-spacing: -0.1px;
+  }
+  .content .questions .owerwatch div:nth-child(1) div p:nth-child(3) {
+    width: 387.7px;
+  }
+  .content .questions .owerwatch div:nth-child(2) {
+    top: 24px;
+    left: -96px;
+  }
+  .content .questions .owerwatch div:nth-child(2) p {
+    margin-left: 8.3px;
+    margin-top: 15.1px;
+    text-align: center;
+  }
+  .content .questions .owerwatch div:nth-child(2) p:nth-child(3) {
+    font-size: 14px;
+    margin-left: 38.9px;
+    margin-top: -13.8px;
+    letter-spacing: -0.5px;
+    text-align: center;
+    line-height: 25.6px;
+    width: 290.7px;
+    letter-spacing: 0px;
+  }
+  .content .questions .owerwatch div:nth-child(3) {
+    top: -44px;
+    left: -92px;
+  }
+  .content .questions .owerwatch div:nth-child(3) p {
+    margin-left: 44.2px;
+    margin-top: 17.3px;
+  }
+  .content .questions .owerwatch div:nth-child(3) p:nth-child(3) {
+    width: 263.7px;
+    margin-left: 46.9px;
+  }
+  .content .consalting {
+    width: 288px;
+    margin-left: -11px;
+    margin-top: -126px;
+  }
+  .content .consalting div {
+    margin-top: 16px;
+    margin-left: 49px;
+    width: 280px;
+  }
+  .content .consalting p:nth-child(1) {
+    font-size: 23.3px;
+    letter-spacing: -1px;
+    margin-left: 9.5px;
+    margin-top: 42.7px;
+    line-height: 30.3px;
+  }
+  .content .consalting p:nth-child(2) {
+    font-size: 13.3px;
+    letter-spacing: 0.3px;
+    margin-left: -1.3px;
+    text-align: center;
+    width: 302px;
+    margin-top: -26px;
+  }
+  .content .consalting .form-for-report {
+    box-shadow: none;
+    width: 280px;
+    height: 388px;
+    left: -69px;
+    top: -24px;
+  }
+  .content .consalting .form-for-report input {
+    width: 264px;
+    left: 19px;
+    margin-right: 13px;
+    top: -124px;
+  }
+  .content .consalting .form-for-report button {
+    margin-right: -9px;
+    margin-top: -119px;
+  }
+  .content .consalting .form-for-report .me {
+    position: relative;
+    top: -36.6px;
+    left: -151px;
+    width: 288px;
+  }
+  .content .consalting .form-for-report .me p:nth-child(1) {
+    font-size: 18px;
+    letter-spacing: 0.2px;
+    margin-left: 178.1px;
+    margin-top: 49.6px;
+    width: 280px;
+    text-align: center;
+    line-height: 27.4px;
+  }
+  .content .consalting .form-for-report .me p:nth-child(2) {
+    margin-top: -68.7px;
+    margin-left: 177.5px;
+    text-align: start;
+    text-transform: none;
+    letter-spacing: -1.2px;
+  }
+  .content .install-video {
+    width: 288px;
+    margin-top: -97px;
+    margin-left: 0px;
+  }
+  .content .install-video h5 {
+    font-size: 21.7px;
+  }
+  .content .install-video p {
+    line-height: 26.3px;
+    font-size: 14px;
+    margin-top: -1.5px;
+    margin-left: 0.9px;
+    width: inherit;
+  }
+  .content .install-video div iframe {
+    height: 160px;
+    left: 2.2px;
+    top: 10.5px;
+    width: 285px;
+  }
+  .content .photo-of-works {
+    margin-top: 122px;
+    margin-left: -3px;
+    width: 288px;
+  }
+  .content .photo-of-works div:first-child h6 {
+    font-size: 20.3px;
+  }
+  .content .photo-of-works div:first-child p {
+    margin-left: 3px;
+    margin-top: -13px;
+    width: 288px;
+    font-size: 14px;
+    line-height: 26.2px;
+  }
+  .content .photo-of-works div.pictures-of-works {
+    width: 340px;
+    margin: 20px auto 50px -3px;
+  }
+  .content .photo-of-works div.pictures-of-works div {
+    margin-right: 52px;
+    margin-bottom: 28px;
+    width: 111px;
+    height: 109px;
+  }
+  .content .photo-of-works div.pictures-of-works div div:nth-child(2) {
+    top: 83px;
+    left: -2px;
+    width: 27px;
+    height: 27px;
+  }
+  .content .photo-of-works div.pictures-of-works div div:nth-child(3) {
+    left: 103px;
+    top: -38px;
+    width: 27px;
+    height: 27px;
+  }
+  .content .photo-of-works div.pictures-of-works div img {
+    width: 144px;
+    height: 129px;
+  }
+  footer {
+    width: 100%;
+    margin-top: 471px;
+  }
+  footer .footer-content div:nth-child(3) div:nth-child(3) {
+    height: 0px;
+    top: -8px;
+    left: 6px;
+    width: 232px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
