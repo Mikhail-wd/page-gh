@@ -933,11 +933,11 @@ footer .footer-content div:nth-child(3) div:nth-child(3) img {
     display: none;
   }
   h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     height: 65px;
     font-size: 43px;
     letter-spacing: 1.25px;
@@ -969,20 +969,20 @@ h6 {
     margin-right: 9px;
   }
   header div p,
-header div a,
-header div div:nth-child(3) {
+  header div a,
+  header div div:nth-child(3) {
     display: none;
   }
   .content {
     width: 768px;
   }
   .content .navigation,
-.content .list-of-respond,
-.content .install-process,
-.content .questions,
-.content .consalting,
-.content .install-video,
-.content .photo-of-works {
+  .content .list-of-respond,
+  .content .install-process,
+  .content .questions,
+  .content .consalting,
+  .content .install-video,
+  .content .photo-of-works {
     width: 768px;
     margin-left: 33px;
     margin-top: -9px;

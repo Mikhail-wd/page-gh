@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/doug.css">
+
+    <title>Document</title>
+</head>
+
+
+<body>
+    <div>
+        <canvas id="my-charts" height="200px" width="500px">
+
+        </canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js">
+
+    </script>
+
+    <script>
+        const chart = document.querySelector("#my-charts").getContext("2d");
+
+        const newChart = new Chart(chart, {
+            type: 'line',
+            data: {
+                labels: [1, 2, 3, 4, 5,6],
+                datasets: [{
+                    label: 'animals',
+                    data: [10, 209, 22, 1, 282],
+                    backgroundColor: ['red'],
+                    borderColor: ["black", "black", "black", "black", "black"],
+                    borderWidth: 4
+                },
+                {
+                    label: 'fish',
+                    data: [20, 109, 122, 12, 82,110],
+                    backgroundColor: ['red'],
+                    borderColor: ["black", "black", "black", "black", "black","red"],
+                    borderWidth: 4
+                }]
+            },
+            options: {}
+        })
+        console.log(Chart);
+    </script>
+</body>
+
+</html>
