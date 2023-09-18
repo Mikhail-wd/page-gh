@@ -1,0 +1,28 @@
+@import "./footer/footer-baners.scss";
+@import "./footer/footer-contacts.scss";
+@import "./footer/footer-menu.scss";
+@import "./footer/footer-rights.scss";
+
+footer {
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    .footer-wrapper {
+        width: 1644px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        color: white;
+        @media screen and (max-width:375px){
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+    }
+}

@@ -1,0 +1,32 @@
+@import "./left-cnt-login.scss";
+@import "./left-cnt-login-values.scss";
+@import "./left-cnt-odred-lst.scss";
+
+.hidden {
+    display: none;
+}
+
+.order-options {
+    margin-top: 30px;
+    width: 1500px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 35px;
+
+    @media screen and (max-width:850px) {
+        width: 736px;
+        flex-flow: column-reverse;
+    }
+    @media screen and (max-width:375px){
+        width: 100%;
+    }
+
+    .left-cnt {
+        width: 736px;
+        @media screen and (max-width:375px){
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,152 @@
+.footer-baners {
+    width: 892px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 561px;
+    @media screen and (max-width:850px) {
+        width: 260px;            
+    }
+    @media screen and (max-width:375px){
+        order:1;
+        width:100%;
+        height: auto;
+    }
+
+    p:nth-child(1) {
+        margin-top: 38px;
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+        @media screen and (max-width:850px) {
+            display: none;            
+        }
+        @media screen and (max-width:375px) {
+            display: block;
+            order: 2;
+            width: 90%;
+            margin-top: 21px;
+            text-align: center;
+        }
+    }
+
+    .footer-baners-sctn {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        width: 600px;
+        margin-bottom: 26px;
+        gap: 7px;
+        @media screen and (max-width:850px) {
+            margin-top: 10px;
+            flex-direction: column;
+            width: 232px;
+            gap: 18px;
+            div:nth-child(2){
+                order: 3;
+            }            
+        }
+        @media screen and (max-width:375px) {
+            order: 3;
+            width: 93%;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        div:nth-child(3){
+            @media screen and (max-width:375px) {
+                order:3;
+            }
+        }
+
+        div {
+            @media screen and (max-width:375px) {
+                width: 33%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            img:nth-child(1) {
+                width: 268px;
+                height: 139px;
+                margin-bottom: -2px;
+                @media screen and (max-width:850px) {
+                    flex-direction: column;
+                    width: 100%;
+                    height: 134px;                    
+                }
+                @media screen and (max-width:375px) {
+                    width: 100px;
+                    height: 50px;
+                }
+            }
+
+            p:nth-child(2) {
+                font-size: 16px;
+                @media screen and (max-width:850px){
+                    display: none;
+                }
+                @media screen and (max-width:375px) {
+                    display:block;
+                    margin-top: 1px;
+                    font-size: 12px;
+                }
+            }
+
+            p:nth-child(3) {
+                margin-top: -8px;
+                font-size: 12px;
+                line-height: 19px;
+                @media screen and (max-width:850px){
+                    display: none;
+                }
+            }
+
+            p:nth-child(2),
+            p:nth-child(3) {
+                text-align: center;
+            }
+        }
+    }
+
+    .footer-banners-xone {
+        width: inherit;
+        border-top: 1px solid #343434;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @media screen and (max-width:850px) {
+            border-top: none;
+            width: 232px;            
+        }
+        @media screen and (max-width:375px) {
+            order: 1;
+            width: 100%;
+        }
+
+        img {
+            margin-top: 60px;
+            @media screen and (max-width:850px) {
+                border-top: none;
+                width: 100%;  
+                margin-top: 0px;          
+            }
+            @media screen and (max-width:375px){
+                width: 54%;
+                margin-top: 15px; 
+            }
+        }
+
+        p {
+            margin-top: 25px;
+            width: 450px;
+            text-align: center;
+            @media screen and (max-width:375px){
+                width: 92%;
+                margin-top: 25px; 
+            }
+        }
+    }
+}

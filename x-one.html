@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" styles="text/css" href="./styles/styles.css">
+    <title>x-one</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-wrapper">
+            <div class="mobil">
+                <p>9:43</p>
+                <div>
+                    <img src="./img/icons/tablet/Cellular Connection_anten.svg" alt="connect">
+                    <img src="./img/icons/tablet/Wifi.svg" alt="wifi">
+                    <img src="./img/icons/tablet/Battery.svg" alt="batty">
+                </div>
+            </div>
+            <div class="nav-wrapper">
+                <img src="./img/icons/tablet/Frame 8512_burger.svg" alt="burger" class="hidden"/>
+                <img src="./img/logo_logoHeader.svg" alt="logo">
+                <nav>
+                    <ul>
+                        <li>Магазины</li>
+                        <li>Доставка</li>
+                        <li>Гарантия и возврат</li>
+                        <li>О бренде</li>
+                        <li>Сертификаты</li>
+                    </ul>
+                </nav>
+
+            </div>
+            <div class="opt-wrapper">
+                <span><img src="./img/icons/tablet/Frame 8797_table-search.svg" alt="search"></span>
+                <span><img src="./img/icons/tablet/Frame 8798_table-fav.svg" alt="favorite"></span>
+                <span><img src="./img/icons/tablet/Frame 8799_table-graph.svg" alt="graph"></span>
+                <span><img src="./img/icons/tablet/Vector_table-cart.svg" alt="cart"><span><p>13</p></span></span>
+            </div>
+            <div class="phone-wrapper">
+                <ul>
+                    <li><img src="./img/icons/Group 8229_phone.svg" alt="phone"></li>
+                    <li>8 (800)-707-72-82</li>
+                    <li><span><a href="####">обратный звонок</a></span></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="content-search">
+            <p>Официальный сайт </br>- эксперт в защите экрана </br>аксессуары премиум класса</p>
+            <div class="search-block">
+                <div class="content-cata-btn">
+                    <span>
+                        <img src="./img/icons/Group 173_pins.svg" alt="pins">
+                    </span>
+                    <p>Каталог</p>
+                </div>
+                <div>
+                    <input type="text">
+                    <div class="content-search-btn">
+                        <p>Найти</p>
+                        <img src="./img/icons/Vector_loopa.svg" alt="search">
+                    </div>
+                </div>
+            </div>
+            <div class="content-search-icon">
+                <div><img src="./img/icons/grafic_graf.svg" alt="graphic"></div>
+                <div>
+                    <p class="icon-letter">12</p>
+                </div>
+                <p>Сравнение</p>
+            </div>
+            <div class="content-search-icon">
+                <div><img src="./img/icons/heart.svg" alt="favorite"></div>
+                <div>
+                    <p class="icon-letter">12</p>
+                </div>
+                <p>Избранное</p>
+            </div>
+            <div class="content-search-icon">
+                <div class="selected"><img src="./img/icons/basket.svg" alt="cart"></div>
+                <div>
+                    <p class="icon-letter">12</p>
+                </div>
+                <p>Корзина</p>
+            </div class="content-search-icon">
+            <div class="content-search-icon">
+                <div><img src="./img/icons/м_avatar.svg" alt="avatar"></div>
+                <div>
+                    <p class="icon-letter">12</p>
+                </div>
+                <p>Ибрагим</p>
+            </div>
+
+        </div>
+        <div class="content-nav">
+            <h1>Оформление заказа. Шаг 1 из 2</h1>
+        </div>
+
+        <div class="content-toggle-order">
+            <div id="rd-start" class="selected">оформление заказа</div>
+            <div id="rd-pay">оплата заказа</div>
+        </div>
+
+        <div class="order-options">
+            <div class="left-cnt">
+                <div class="left-cnt-wrt">
+                    <p>Авторизация</p>
+                    <p>Введите номер телефона</p>
+                    <p>Мы отправим код для подтверждения на ваш номер телефона</p>
+                    <span><input type="tel" placeholder="+7(999)999-99-99"> <img src="./img/icons/Group 8229_phone.svg"
+                            alt="phone"></span>
+                    <button onclick="showing()">Войти и оформить</button>
+                    <p>Войти по почте</p>
+                </div>
+                <div class="left-cnt-lgn hidden">
+                    <div class="promo">
+                        <span>Есть промокод?</span>
+                        <span>Использовать промокод</span>
+                    </div>
+                    <div class="login-detals">
+                        <form submit="default">
+                            <span><input type="text" placeholder="Ангелина"> <img src="./img/icons/Profile 1_prof.svg"
+                                    alt="phone"></span>
+                            <span><input type="text" placeholder="Романова"> <img src="./img/icons/Profile 1_prof.svg"
+                                    alt="phone"></span>
+                            <span><input type="tel" placeholder="+7(999) 999-99-99"> <img
+                                    src="./img/icons/Group 8229_phone.svg" alt="phone"></span>
+                            <span><input type="mail" placeholder="test@gmail.com"> <img
+                                    src="./img/icons/Message 35_mail.svg" alt="phone"></span>
+                            <span><textarea placeholder="Примечание к заказу"></textarea><img
+                                    src="./img/icons/Message 1_text.svg" alt="phone"></span>
+                            <button onclick="submit">Оформить заказ</button>
+                        </form>
+                    </div>
+                    <p>Выберите способ доставки</p>
+                    <img src="./img/image 10_desk.png" alt="image?">
+                </div>
+                <div id="ord-list" class="left-cnt-order-list hidden">
+                    <p>Способ оплаты</p>
+                    <ul>
+                        <li><img src="./img/icons/Tick.png" alt=""><p>Банковской картой онлайн</p></li>
+                        <li><img src="./img/icons/logo_sber.png" alt=""><p>SberPay</p></li>
+                        <li><img src="./img/icons/logo_umoney.png" alt=""><p>ЮMoney</p></li>
+                        <li><img src="./img/icons/Ресурс 1 1_payAsget.png" alt=""><p>Оплата при получении</p></li>
+                    </ul>
+                </div>
+                <div id="left-slider" class="left-cnt-actions">
+                    <img src="./img/Group 554_gift.png" alt="gift">
+                    <img src="./img/Frame 8624_special.png" alt="special">
+                    <img src="./img/Frame 8625_special2.png" alt="special2">
+                </div>
+            </div>
+            <div class="right-cnt">
+                <div class="right-cnt-order">
+                    <p>Ваш заказ</p>
+                    <h2>товар</h2>
+                    <div class="order-img-dsc">
+                        <img id="order-pic" src="./img/Rectangle 325phone_order.png" alt="order">
+                        <p>Непробиваемая броня телефона iPhone 14/13/13 Pro защитная противоударная бронепленка X-ONE
+                            Extreme Shock Eliminator 4rd-generation</p>
+                        <p>2 800 ₽</p>
+
+                    </div>
+                    <ul class="order-vls">
+                        <li><span>Стоимость</span><span>2 800 ₽</span></li>
+                        <li><span>Артикул</span><span>1720383</span></li>
+                        <li><span>Количество</span><span>1</span></li>
+                        <li><span>Номер заказа</span><span>542312</span></li>
+                        <li><span>Дата заказа</span><span>12.05.2023</span></li>
+                        <li><span>Доставка</span><span>SafeRoute</span></li>
+                        <li><span>Стоимость доставки</span><span>324 ₽</span></li>
+                        <li><span>Итого</span><span>3124 ₽</span></li>
+                    </ul>
+                </div>
+                <div  class="right-cnt-actions">
+                    <img src="./img/Group 554_gift.png" alt="gift">
+                    <img src="./img/Frame 8624_special.png" alt="special">
+                    <img src="./img/Frame 8625_special2.png" alt="special2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-wrapper">
+            <div class="footer-menu">
+                <p>Меню</p>
+                <ul>
+                    <li>Инструкции по установке</li>
+                    <li>Каталог товаров</li>
+                    <li>Гарантии и возврат</li>
+                    <li>Сертификаты</li>
+                    <li>О бренде</li>
+                    <li>Новости</li>
+                    <li>Отзывы</li>
+                    <li>Полезные статьи</li>
+                    <li>Карта сайта</li>
+                    <li>Наши филиалы</li>
+                    <li>Контакты</li>
+                </ul>
+            </div>
+            <div class="footer-baners">
+                <p>Полный ассортимент товаров на сайтах партнёров</p>
+                <div class="footer-baners-sctn">
+                    <div>
+                        <img src="./img/Rectangle 212_ozon.png" alt="ozon">
+                        <p>Ozon</p>
+                        <p>Полный ассортимент товаровX-ONE представлен в каталоге нашего магазина
+                            на маркетплейсе OZON</p>
+                    </div>
+                    <div>
+                        <img src="./img/Group 257_wild.png" alt="wildberry">
+                        <p>Wildberries</p>
+                        <p>Полный ассортимент товаровX-ONE представлен в каталоге нашего магазина
+                            на маркетплейсе WILDBERRIES</p>
+                    </div>
+                    <div>
+                        <img src="./img/Rectangle 211_ynd.png" alt="yandex">
+                        <p>Яндекс.Маркет</p>
+                        <p>Полный ассортимент товаровX-ONE представлен в каталоге нашего магазина
+                            на маркетплейсе Яндекс.Ммаркет</p>
+                    </div>
+                </div>
+                <div class="footer-banners-xone">
+                    <img src="./img/logo_footer.svg" alt="logoFooter">
+                    <p>эксперт в защите экрана. Мобильные аксессуары премиум-класса.Эксклюзивный представитель в России
+                        и СНГ.</p>
+                </div>
+            </div>
+            <div class="footer-contacts">
+                <div class="footer-contacts-phnnmail">
+                    <p>Контакты</p>
+                    <p>8 ( 800 ) -707-72-82</p>
+                    <a href="###">shop@x-one.pro</a>
+                </div>
+                <div class="footer-contacts-social">
+                    <p>Мы в соцсетях</p>
+                    <ul>
+                        <li><img src="./img/icons/Group 262_vk.png" alt="vk"></li>
+                        <li><img src="./img/icons/Group 263_teleg.png" alt="telega"></li>
+                        <li><img src="./img/icons/Group 264insta.png" alt="insta"></li>
+                        <li><img src="./img/icons/Group 265_ytb.png" alt="ytb"></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts-partnership">
+                    <p>Сотрудничество</p>
+                    <ul>
+                        <li>Франшиза</li>
+                        <li>ОПТ</li>
+                        <li>По рекламе</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-rights">
+                <div class="footer-rights-vls">
+                    <div></div>
+                    <div><span>Политикой конфиденциальности</span><span>ОГРН: 318272400062860 ИНН: 270604727582</span>
+                    </div>
+                    <div><span>© 2023. Все права защищены.</span></div>
+                </div>
+                <div class="footer-rights-cprgt">
+                    <p>X.ONE® - товарный знак охраняется на территории РФ и СНГ. Все права и данные защищены.
+                        <br />При использовании материалов сайта, ссылка на сайт обязательна.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="./scripts/index.js">
+    </script>
+</body>
+
+</html>

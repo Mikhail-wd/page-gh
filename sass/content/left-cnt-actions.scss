@@ -1,0 +1,30 @@
+.left-cnt-actions {
+    display: none;
+    @media screen and (max-width:850px) {
+        overflow-x: scroll ;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 736px;
+        margin-top: 13px;  
+        padding-bottom: 10px;  
+        gap: 14px;
+        img:nth-child(2){
+            height: 90%;
+            margin-top: 1.8%;
+        }    
+    }
+    @media screen and (max-width:375px){
+        margin-top: 2px;
+        width: 96%;
+        margin-left: 14px;
+        img{
+            width: 580px;
+            margin-top: 1.8%;
+        }
+        img:nth-child(2){
+            height: 90%;
+            margin-top: 4.8%;
+        } 
+    }
+}

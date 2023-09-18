@@ -1,0 +1,155 @@
+.footer-contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 48px;
+    width: 311px;
+    height: 561px;
+    border-left: 1px solid #343434;
+
+    @media screen and (max-width:850px) {
+        width: 242px;
+        border-left: none;
+    }
+
+    @media screen and (max-width:375px) {
+        order: 3;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-rows: auto;
+        height: 170px;
+        grid-template-areas:"mail mail partners partners"
+        "contacts contacts partners partners";
+    }
+
+    .footer-contacts-phnnmail {
+        
+        @media screen and (max-width:850px) {
+            margin-left: -25px;
+            margin-top: -20px;
+        }
+        @media screen and (max-width:375px){
+            height: 70px;
+            grid-area:mail;
+        }
+
+        p:nth-child(1) {
+            margin-top: 38px;
+            margin-left: 35px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        p:nth-child(2) {
+            margin-top: 25px;
+            letter-spacing: -0.8px;
+            margin-left: 35px;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            @media screen and (max-width:375px){
+                font-size: 14px;
+                letter-spacing: 0.3px;
+                margin-top: -3px;
+            }
+        }
+
+        a:nth-child(3) {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-left: 35px;
+            font-size: 16px;
+            border-bottom: solid 2px white;
+            padding-bottom: 3px;
+            @media screen and (max-width:375px){
+                font-size: 14px;
+                letter-spacing: 0.3px;
+                margin-top: 3px;
+            }
+        }
+    }
+
+    .footer-contacts-social {
+        @media screen and (max-width:850px) {
+            margin-left: -25px;
+            margin-top: -20px;
+        }
+        @media screen and (max-width:375px){
+            margin-top: 15px;
+        }
+
+        p {
+            margin-left: 35px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+
+        ul {
+            margin-left: -4px;
+            list-style: none;
+
+            li {
+                display: inline-block;
+                margin-top: -4px;
+                margin-left: 2px;
+            }
+        }
+        @media screen and (max-width:375px){
+            height: 100px;
+            grid-area:contacts;
+        }
+    }
+
+    .footer-contacts-partnership {
+
+        @media screen and (max-width:850px) {
+            margin-left: -25px;
+            margin-top: -60px;
+        }
+        @media screen and (max-width:375px){
+            margin-left: -123px;
+            margin-top: 40px;
+        }
+
+        p {
+            margin-left: 35px;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            margin-bottom: -3px;
+        }
+
+        ul {
+            margin-left: -6px;
+            list-style: none;
+            width: 141px;
+            @media screen and (max-width:375px){
+                width: 160px;
+                margin-top: 40px;
+            }
+
+            li {
+                font-size: 16px;
+                padding-top: 11px;
+                padding-bottom: 11px;
+                border-radius: 5px;
+                text-align: center;
+                border: #D32424 solid 1px;
+                display: block;
+                margin-left: 2px;
+                margin-bottom: 15px;
+                @media screen and (max-width:375px){
+                    width: 160px;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        @media screen and (max-width:375px) {
+            grid-area:partners;
+            margin-top: -23px;
+        }
+    }
+}
