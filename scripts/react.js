@@ -1,25 +1,65 @@
 function App() {
     const [toggleBurger, setToggleBurger] = React.useState(false)
     const [toggleModalBuy, setToggleModalBuy] = React.useState(false)
+    const [price, setPrice] = React.useState(null)
+    const [data, setData] = React.useState([
+        {
+            name: "Дымка",
+            content: "Компактный дистиллятор с сухопарником и эффективным охладителем. Можно ароматизировать напитки во время перегонки",
+            img: "./img/earn-catalogue-still-30.webp",
+            price: 2000
+        },
+        {
+            name: "Cухопарник",
+            content: "Cухопарник, мощный холодильник и удлинённая царга. Кламповое соединение для модернизации. Можно установить джин-корзину ",
+            img: "./img/earn-catalogue-still-31.webp",
+            price: 3012
+        },
+        {
+            name: "Спиртник",
+            content: "1.5” колонна с узлом отбора по жидкости и доохладителем. Можно модернизировать под производство чистого спирта ",
+            img: "./img/earn-catalogue-still-1.webp",
+            price: 632
+        },
+        {
+            name: "Трубник",
+            content: "Мощная и экономичная система охлаждения. Узел отбора по жидкости. Есть врезка под ТЭН. Можно модернизировать под производство спирта  ",
+            img: "./img/earn-catalogue-still-3.webp",
+            price: 4100
+        },
+        {
+            name: "Дизентегратор",
+            content: "2” продвинутый дистиллятор с узлом отбора по жидкости. Мощная и экономичная система охлаждения. Есть врезка под ТЭН  ",
+            img: "./img/earn-catalogue-still-4.webp",
+            price: 4121
+        },
+        {
+            name: "Охладитель",
+            content: "Паровой и водный режим. Вмещает до 15 банок. Любой тип крышек на банках. Кламповое соединение для установки 2” колонны для самогона и спирта ",
+            img: "./img/earn-catalogue-avtoclave-1.webp",
+            price: 9032
+        }
+    ])
 
     function burgerToggle() {
         setToggleBurger(!toggleBurger)
     }
-    function modalToggle() {
+    function modalToggle(priceTopass) {
+        setPrice(priceTopass)
         setToggleModalBuy(!toggleModalBuy)
     }
     return (
         <div className="main">
             <div className={toggleModalBuy === false ? "modal hidden" : "modal"}>
                 <div className="modal-body">
-                    <span className="modal-cross" onClick={modalToggle}>+</span>
+                    <span className="modal-cross" onClick={()=>modalToggle(null)}>+</span>
                     <p>Заказ без предоплаты!</p>
                     <p className="modal-body_state">Оплата после получение и проверки заказа</p>
                     <input placeholder="Как вас зовут ?" />
                     <input placeholder="Ваш телефон" />
                     <div className="modal-value">
                         <p>Сумма заказа:</p>
-                        <p>2000 р <button>Купить</button></p>
+                        <p>{price} р <button>Купить</button></p>
                     </div>
                     <div className="modal-slice"></div>
                     <p>
@@ -79,150 +119,24 @@ function App() {
                 <div className="orders">
                     <h2><span className="text-grad">Хиты</span> продаж</h2>
                     <div className="items-list" id="listwhere">
-                        <div className="content-item">
-                            <p>Дымка</p>
-                            <p>Компактный дистиллятор с сухопарником и эффективным охладителем. Можно ароматизировать напитки во время перегонки </p>
-                            <span className="items-sizes">
-                                <div className="item-size_active">
-                                    20 л
-                                </div>
-                                <div className="item-size">
-                                    30 л
-                                </div>
-                            </span>
-                            <span>
-                                <button onClick={modalToggle}>2000 Р Купить</button>
-                                <img src="./img/earn-catalogue-still-30.webp" alt="smokey" />
-                            </span>
-                        </div>
-                        <div className="content-item">
-                            <p>Дымка</p>
-                            <p>Компактный дистиллятор с сухопарником и эффективным охладителем. Можно ароматизировать напитки во время перегонки </p>
-                            <span className="items-sizes">
-                                <div className="item-size_active">
-                                    20 л
-                                </div>
-                                <div className="item-size">
-                                    30 л
-                                </div>
-                            </span>
-                            <span>
-                                <button onClick={modalToggle}>2000 Р Купить</button>
-                                <img src="./img/earn-catalogue-still-30.webp" alt="smokey" />
-                            </span>
-                        </div>
-                        <div className="content-item">
-                            <p>Дымка</p>
-                            <p>Компактный дистиллятор с сухопарником и эффективным охладителем. Можно ароматизировать напитки во время перегонки </p>
-                            <span className="items-sizes">
-                                <div className="item-size_active">
-                                    20 л
-                                </div>
-                                <div className="item-size">
-                                    30 л
-                                </div>
-                            </span>
-                            <span>
-                                <button>2000 Р Купить</button>
-                                <img src="./img/earn-catalogue-still-30.webp" alt="smokey" />
-                            </span>
-                        </div>
-                        <div className="content-item">
-                            <p>Дымка</p>
-                            <p>Компактный дистиллятор с сухопарником и эффективным охладителем. Можно ароматизировать напитки во время перегонки </p>
-                            <span className="items-sizes">
-                                <div className="item-size_active">
-                                    20 л
-                                </div>
-                                <div className="item-size">
-                                    30 л
-                                </div>
-                            </span>
-                            <span>
-                                <button>2000 Р Купить</button>
-                                <img src="./img/earn-catalogue-still-30.webp" alt="smokey" />
-                            </span>
-                        </div>
-                        <div className="content-item">
-                            <p>Дымка</p>
-                            <p>Компактный дистиллятор с сухопарником и эффективным охладителем. Можно ароматизировать напитки во время перегонки </p>
-                            <span className="items-sizes">
-                                <div className="item-size_active">
-                                    20 л
-                                </div>
-                                <div className="item-size">
-                                    30 л
-                                </div>
-                            </span>
-                            <span>
-                                <button>2000 Р Купить</button>
-                                <img src="./img/earn-catalogue-still-30.webp" alt="smokey" />
-                            </span>
-                        </div>
-                        <div className="content-item">
-                            <p>Дымка</p>
-                            <p>Компактный дистиллятор с сухопарником и эффективным охладителем. Можно ароматизировать напитки во время перегонки </p>
-                            <span className="items-sizes">
-                                <div className="item-size_active">
-                                    20 л
-                                </div>
-                                <div className="item-size">
-                                    30 л
-                                </div>
-                            </span>
-                            <span>
-                                <button>2000 Р Купить</button>
-                                <img src="./img/earn-catalogue-still-30.webp" alt="smokey" />
-                            </span>
-                        </div>
-                        <div className="content-item">
-                            <p>Дымка</p>
-                            <p>Компактный дистиллятор с сухопарником и эффективным охладителем. Можно ароматизировать напитки во время перегонки </p>
-                            <span className="items-sizes">
-                                <div className="item-size_active">
-                                    20 л
-                                </div>
-                                <div className="item-size">
-                                    30 л
-                                </div>
-                            </span>
-                            <span>
-                                <button>2000 Р Купить</button>
-                                <img src="./img/earn-catalogue-still-30.webp" alt="smokey" />
-                            </span>
-                        </div>
-                        <div className="content-item">
-                            <p>Дымка</p>
-                            <p>Компактный дистиллятор с сухопарником и эффективным охладителем. Можно ароматизировать напитки во время перегонки </p>
-                            <span className="items-sizes">
-                                <div className="item-size_active">
-                                    20 л
-                                </div>
-                                <div className="item-size">
-                                    30 л
-                                </div>
-                            </span>
-                            <span>
-                                <button>2000 Р Купить</button>
-                                <img src="./img/earn-catalogue-still-30.webp" alt="smokey" />
-                            </span>
-                        </div>
-                        <div className="content-item">
-                            <p>Дымка</p>
-                            <p>Компактный дистиллятор с сухопарником и эффективным охладителем. Можно ароматизировать напитки во время перегонки </p>
-                            <span className="items-sizes">
-                                <div className="item-size_active">
-                                    20 л
-                                </div>
-                                <div className="item-size">
-                                    30 л
-                                </div>
-                            </span>
-                            <span>
-                                <button>2000 Р Купить</button>
-                                <img src="./img/earn-catalogue-still-30.webp" alt="smokey" />
-                            </span>
-                        </div>
+                        {data.map(index => 
+                            <div key={index.name} className="content-item">
+                                <p>{index.name}</p>
+                                <p>{index.content} </p>
+                                <span className="items-sizes">
+                                    <div className="item-size_active">
+                                        20 л
+                                    </div>
+                                    <div className="item-size">
+                                        30 л
+                                    </div>
+                                </span>
+                                <span>
+                                    <button onClick={()=>modalToggle(index.price)}>{index.price} Р Купить</button>
+                                    <img src={index.img} alt="smokey" />
+                                </span>
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className="whereus" id="mapwhere">
