@@ -1,6 +1,304 @@
+function Carosel() {
+    const [dataCar, setDataCar] = React.useState([
+        {
+            title: "Отметь день рождение вместе с нами",
+            content: "Дарим скидку 10% в честь дня рождения. Вводи промокод Happy в корзине",
+            img: "./img/susi/dn-com-tild3663-3664-4333-b238-343566613665-photo-240x240.jpg"
+        },
+        {
+            title: "Скачивай мобильное приложение",
+            content: "Дарим скидку 10% в честь дня рождения. Вводи промокод Happy в корзине",
+            img: "./img/susi/9esjrgiufpa-290x290.jpg"
+        },
+        {
+            title: "Забери со скидкой по пути",
+            content: "10% скидка на заказ с собойул. Бэра 28А",
+            img: "./img/susi/cfs.jpg"
+        }
+    ])
+    function caroControll(controll) {
+        if (controll === "right") {
+            let sortArr = dataCar.slice(1)
+            setDataCar([...sortArr, dataCar[0]])
+        } else {
+            let sortArr = dataCar.slice(0, dataCar.length - 1)
+            setDataCar([dataCar[dataCar.length - 1], ...sortArr])
+        }
+
+    }
+    return (
+        <div className="search-carossel">
+            <div className="search-carossel__controll">
+                <svg onClick={() => caroControll("left")} className="carossel_left-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+                </svg>
+                <svg onClick={() => caroControll("right")} className="carossel_right-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+                </svg>
+            </div>
+            <div className="search-carossel__paging"></div>
+            <div id="caro-content" className="caro-content">
+                {dataCar.map(index =>
+                    <div key={Math.random() * 1000}>
+                        <div>
+                            <h3>{index.title}</h3>
+                            <p> {index.content}</p>
+                            <p className="yes-but">Скидка действует два дня до и день после дня рождения* </p>
+                        </div>
+                        <img src={index.img} alt={Math.random() * 1000} />
+                    </div>
+                )}
+            </div>
+        </div>
+    )
+}
+
+function Slider({ dataArr, condition }) {
+    const [boxWidth, setboxWidth] = React.useState(null)
+    const [data, setData] = React.useState(dataArr)
+    const [imgIndex, setImgIndex] = React.useState(0)
+
+    function moveSlider(controll) {
+        if (controll === "right") {
+            if (imgIndex >= (data.length-1) ) {
+                setImgIndex(0)
+            } else {
+                setImgIndex(imgIndex + 1)
+            }
+        } else {
+            if (imgIndex <= (data.length) && imgIndex != 0) {
+                setImgIndex(imgIndex - 1)
+            } else {
+                setImgIndex(0)
+            }
+        }
+
+    }
+    
+    React.useEffect(()=>{
+        if (document.querySelector(".content-plates").offsetWidth >=1200){
+            setboxWidth(300) 
+        } if (document.querySelector(".content-plates").offsetWidth >=600 && document.querySelector(".content-plates").offsetWidth <=1199){
+            setboxWidth(410)
+        } if (document.querySelector(".content-plates").offsetWidth <=599){
+            setboxWidth(540)
+        }
+    },imgIndex)
+    return (
+        <div className="content-popular">
+            <div className="content__controll">
+                <svg onClick={() => moveSlider("left")} className="content_left-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+                </svg>
+                <p>Хиты продаж</p>
+                <svg onClick={() => moveSlider("right")} className="content_right-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+                </svg>
+            </div>
+            <div className="content-plates" style={{ marginRight: `${imgIndex * (boxWidth)}px` }}>
+                {data.map(index =>
+                    <div key={index.id} >
+                        <img src={index.img} alt={index.name} />
+                        <h3>{index.name}</h3>
+                        <p><span>Количество</span><span></span><span>{index.amount} шт.</span></p>
+                        <p><span>Вес</span><span></span><span>{index.weight} гр.</span></p>
+                        <p>{index.price} ₽</p>
+                        <button>Выбрать</button>
+                    </div>
+                )}
+            </div>
+        </div>
+    )
+}
+
+function ModalMenu({ activeModal }) {
+    return (
+        <div className="modal-menu">
+            <div className="modal-menu_options">
+                <h3>
+                    <svg onClick={() => activeModal()} className="content_left-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
+                    </svg>
+                    <span>Меню</span>
+                </h3>
+                <div className="modal-menu_slice"></div>
+                <ul>
+                    <li>Акционные товары</li>
+                    <li>Ролы</li>
+                    <li>Суши</li>
+                    <li>Салаты</li>
+                    <li>Супы</li>
+                    <li>Напитки</li>
+                </ul>
+                <div className="modal-menu_slice"></div>
+                <ul>
+                    <li>Доставка и оплата</li>
+                    <li>Отзывы</li>
+                    <li>Контакты</li>
+                </ul>
+            </div>
+        </div>
+    )
+}
+
+function Basket({activeBasket}) {
+    return (
+        <div className="basket-wrapper">
+            <div className="basket-body">
+                <h3><span>Корзина</span><span onClick={()=>activeBasket()}>+</span></h3>
+                <div className="basket-list">
+                    <div>
+                        <div className="basker-list_leftCol">
+                            <img src="./img/susi/megapol.jpg" alt="polis"/>
+                            <p>Сет мегаполис</p>
+                        </div>
+                        <div  className="basker-list_rightCol">
+                            <p>3500 ₽</p>
+                            <div>
+                                <span>-</span>
+                                <span>0</span>
+                                <span>+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div className="basker-list_leftCol">
+                            <img src="./img/susi/megapol.jpg" alt="polis"/>
+                            <p>Сет мегаполис</p>
+                        </div>
+                        <div  className="basker-list_rightCol">
+                            <p>3500 ₽</p>
+                            <div>
+                                <span>-</span>
+                                <span>0</span>
+                                <span>+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div>
+                    <button>
+                        Вернутся</button>
+                    <button>
+                        Оформить заказ
+                    </button>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 function App() {
+    const [toggleMenu, setToggleMenu] = React.useState(false)
+    const [toggleBasket, setToggleBasket] = React.useState(false)
+    const [data, stData] = React.useState([
+        {
+            id: 3124,
+            name: "Сет мегаполис",
+            price: 1820,
+            amount: 80,
+            weight: 2300,
+            content: "Хот с курицей, Спайс с курицей, Овощной, Гуанчжоу, Цезарь, Хокайдо, Маки с курицей, Торонто, Маки с томатом, Спайс с крабом, имбирь, соевый соус, васаби.",
+            condition: "hit",
+            img: "./img/susi/megapol.jpg"
+        },
+        {
+            id: 3126,
+            name: "Сет №12",
+            price: 920,
+            amount: 32,
+            weight: 1120,
+            content: "Изуми, Шиитаке, Ика, Биг Хот с окунем, имбирь, соевый соус, васаби.В составе роллов: окунь, грибы Шиитаке, кальмар, сыр творожный, майонез, огурцы, томаты. лук порей, омлет Тамаго.",
+            condition: null,
+            img: "./img/susi/set12.jpg"
+        },
+        {
+            id: 3125,
+            name: "Фудзияма",
+            price: 360,
+            amount: 8,
+            weight: 269,
+            content: "Рис, нори, лосось, томат, кунжут, соус для запекания. ",
+            condition: null,
+            img: "./img/susi/fudzi.jpg"
+        },
+        {
+            id: 3127,
+            name: "Том ям с морепродуктами",
+            price: 580,
+            amount: 1,
+            weight: 475,
+            content: "Ролл жареный (рис для суши, лосось микс, сыр филадельфия, огурец, кляр, сухари панко)            Ролл запеченный(рис для суши, сыр филадельфия, огурец, лосось микс, соус для запекания)            Ролл запеченный в кунжуте(рис для суши, соус спайс, лосось микс, огурец, соус для запекания, кунжут)            Ролл с икрой тобико(рис для суши, томат, огурец, лосось микс, соус с икрой тобико)            Ролл лук фри(рис для суши, салат чука, лук фри, соус ореховый, лосось микс)            Ролл в стружке тунца(рис для суши, лосось темпупа, огурец, лук порей, икра тобико, стружка тунца), имбирь, васаби, соевый соус.",
+            condition: null,
+            img: "./img/susi/tomas.jpg"
+        },
+        {
+            id: 3128,
+            name: "Сет Киото ",
+            price: 1910,
+            amount: 42,
+            weight: 1400,
+            content: "Креветка тигровая, мидии, кокосовое молоко, паста том ям, кальмары, шампиньоны, рис для суши, лимон.",
+            condition: null,
+            img: "./img/susi/tokyo.jpg"
+        },
+        {
+            id: 3129,
+            name: "Креветки темпура",
+            price: 380,
+            amount: 1,
+            weight: 175,
+            content: "Тигровые креветки, панировочные сухари, кляр.  ",
+            condition: null,
+            img: "./img/susi/shrimpy.jpg"
+        },
+        {
+            id: 3130,
+            name: "Сет Хот Чикен",
+            price: 1080,
+            amount: 20,
+            weight: 1175,
+            content: "Хокайдо, Этна, Биг хот с курицей, Хот с курицей(2шт), имбирь, соевый соус, васаби.",
+            condition: null,
+            img: "./img/susi/cfs.jpg"
+        },
+        {
+            id: 3131,
+            name: "Сет Фэнси Хрючево",
+            price: 1280,
+            amount: 50,
+            weight: 1875,
+            content: "Ролл Бекон, Запечённый с беконом, Жареный с беконом, Ролл Тамаго, Запечённый со снежным крабом, Спайс бекон, имбирь, васаби, соевый соус.",
+            condition: null,
+            img: "./img/susi/piggyset.jpg"
+        }
+    ])
+
+    function toggleBasketBody() {
+        setToggleBasket(!toggleBasket)
+        if (toggleBasket === false) {
+            let body = document.querySelector("body")
+            body.classList.add("overflow")
+        } else {
+            let body = document.querySelector("body")
+            body.classList.remove("overflow")
+        }
+    }
+    function toggleMenuBody() {
+        setToggleMenu(!toggleMenu)
+        if (toggleMenu === false) {
+            let body = document.querySelector("body")
+            body.classList.add("overflow")
+        } else {
+            let body = document.querySelector("body")
+            body.classList.remove("overflow")
+        }
+    }
     return (
         <>
+            {toggleBasket == false ? null : <Basket activeBasket={() => toggleBasketBody()} />}
+            {toggleMenu == false ? null : <ModalMenu activeModal={() => toggleMenuBody()} />}
             <header>
                 <div className="logo-header">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" className="logo">
@@ -21,6 +319,11 @@ function App() {
                         <li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.62,2.75H7.38c-2.59,0-4.62,2.04-4.62,4.62v9.25c0,2.59,2.04,4.62,4.62,4.62h9.25c2.59,0,4.62-2.04,4.62-4.62V7.38c0-2.59-2.04-4.62-4.62-4.62Zm2.77,13.88c0,1.57-1.2,2.78-2.77,2.78H7.38c-1.57,0-2.78-1.2-2.78-2.78V7.38c0-1.57,1.2-2.78,2.78-2.78h9.25c1.57,0,2.77,1.2,2.77,2.78v9.25ZM12,7.38c-2.59,0-4.62,2.03-4.62,4.62s2.03,4.62,4.62,4.62,4.62-2.03,4.62-4.62-2.03-4.62-4.62-4.62Zm0,7.4c-1.57,0-2.78-1.2-2.78-2.78s1.2-2.78,2.78-2.78,2.78,1.2,2.78,2.78-1.2,2.78-2.78,2.78Zm4.62-8.33c.51,0,.93,.41,.93,.93s-.41,.93-.93,.93-.93-.41-.93-.93,.41-.93,.93-.93Z"></path></svg></a></li>
                         <li><a><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.92,13.03c-.39-.49-.28-.71,0-1.15,0,0,3.21-4.43,3.54-5.93h0c.16-.55,0-.95-.79-.95h-2.62c-.67,0-.98,.35-1.14,.73,0,0-1.34,3.2-3.23,5.27-.61,.6-.89,.79-1.23,.79-.16,0-.42-.19-.42-.74V5.95c0-.66-.19-.95-.74-.95h-4.13c-.42,0-.67,.31-.67,.59,0,.62,.95,.77,1.04,2.52v3.8c0,.83-.15,.99-.49,.99-.89,0-3.06-3.21-4.34-6.89-.26-.71-.51-1-1.19-1H.9c-.75,0-.9,.35-.9,.73,0,.68,.89,4.07,4.15,8.55,2.17,3.06,5.23,4.72,8.01,4.72,1.67,0,1.88-.37,1.88-1,0-2.92-.15-3.2,.69-3.2,.39,0,1.06,.19,2.62,1.67,1.78,1.75,2.08,2.53,3.07,2.53h2.62c.75,0,1.13-.37,.91-1.09-.5-1.53-3.87-4.67-4.02-4.88Z"></path></svg></a></li>
                     </ul>
+                    <div className="burger" onClick={() => toggleMenuBody()}>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
                     <div className="phone">
                         <span>+7 (9233) 21-14-22</span><br />Ежедневно с 10:00 до 18:00
                     </div>
@@ -51,7 +354,8 @@ function App() {
                                 <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
                             </svg>
                         </div>
-                        <div className="basket">
+                        <div className="basket" onClick={()=>toggleBasketBody()}>
+                            <p>Корзина</p>
                         </div>
                     </div>
                     <div className="tags-search">
@@ -64,27 +368,7 @@ function App() {
                         <div>#Трава с рисом</div>
                         <div>#Трава с рисом</div>
                     </div>
-                    <div className="search-carossel">
-                        <div className="search-carossel__controll">
-                            <svg className="carossel_left-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
-                            </svg>
-                            <svg className="carossel_right-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
-                            </svg>
-                        </div>
-                        <div className="search-carossel__paging"></div>
-                        <div className="caro-content">
-                            <div>
-                                <div>
-                                    <h3>Отметь день рождение вместе с нами</h3>
-                                    <p> Дарим скидку 10% в честь дня рождения <br /> Вводи промокод Happy в корзине</p>
-                                    <p className="yes-but">Скидка действует два дня до и день после дня рождения* </p>
-                                </div>
-                                <img src="./img/susi/dn-com-tild3663-3664-4333-b238-343566613665-photo-240x240.jpg" alt="susi" />
-                            </div>
-                        </div>
-                    </div>
+                    <Carosel />
                     <div className="our-options">
                         <div>
                             <div className="our-options__text">
@@ -121,8 +405,7 @@ function App() {
                     </div>
                 </div>
             </div>
-            <div className="content popular"></div>
-            <div className="content hits"></div>
+            {data === undefined ? null : <Slider dataArr={data} />}
             <footer>
                 <div className="footer-info">
                     <ul>
