@@ -53,14 +53,57 @@ function Carosel() {
     )
 }
 
-function Slider({ dataArr, condition }) {
+function ItemPlate({activeItem, itemData}) {
+    const [amount,setAmount] = React.useState(1)
+    
+    function setAmountFunc(state){
+        if(state === "inc"){
+            setAmount(amount+1)
+        } if( state === "dic" && amount >1 ){
+            setAmount(amount-1)
+        }
+    }
+    return (
+        <div className="item-wrapper">
+            <div className="item-body">
+                <div>
+                    <p onClick={()=>activeItem()}>+</p>
+                </div>
+                <div>
+                    <img src={itemData.img} alt={itemData.name}/>
+                    <div className="item-body__descryption">
+                        <h3>{itemData.name}</h3>
+                        <p>{itemData.price*amount} ₽</p>
+                        <p><span>Количество</span><span></span><span>{itemData.amount} шт.</span></p>
+                        <p><span>Вес</span><span></span><span>{itemData.weight} гр.</span></p>
+                        <p className="item-body__ingridients">{itemData.content}</p>
+                    </div>
+                </div>
+                <div className="item-body__controll">
+                    <button onClick={()=>activeItem()}>Вернутся</button>
+                    <div>
+                        <span onClick={()=>setAmountFunc("dic")}>-</span>
+                        <span>{amount}</span>
+                        <span onClick={()=>setAmountFunc("inc")}>+</span>
+                    </div>
+                    <button>В корзину</button>
+                </div>
+            </div>
+
+        </div>
+    )
+}
+
+function Slider({ dataArr }) {
     const [boxWidth, setboxWidth] = React.useState(null)
     const [data, setData] = React.useState(dataArr)
     const [imgIndex, setImgIndex] = React.useState(0)
+    const [itemToggle, setItemToggle] = React.useState(false)
+    const [activeItemData,setActiveItemData] = React.useState(null)
 
     function moveSlider(controll) {
         if (controll === "right") {
-            if (imgIndex >= (data.length-1) ) {
+            if (imgIndex >= (data.length - 1)) {
                 setImgIndex(0)
             } else {
                 setImgIndex(imgIndex + 1)
@@ -74,18 +117,41 @@ function Slider({ dataArr, condition }) {
         }
 
     }
-    
-    React.useEffect(()=>{
-        if (document.querySelector(".content-plates").offsetWidth >=1200){
-            setboxWidth(300) 
-        } if (document.querySelector(".content-plates").offsetWidth >=600 && document.querySelector(".content-plates").offsetWidth <=1199){
+
+    function toggleItem(id,img,name,price,weight,amount,content) {
+        setActiveItemData(
+            {   
+                id:id,
+                img:img,
+                name:name,
+                price:price,
+                weight:weight,
+                amount:amount,
+                content:content
+            }
+        )
+        setItemToggle(!itemToggle)
+        if (itemToggle === false) {
+            let body = document.querySelector("body")
+            body.classList.add("overflow")
+        } else {
+            let body = document.querySelector("body")
+            body.classList.remove("overflow")
+        }
+    }
+
+    React.useEffect(() => {
+        if (document.querySelector(".content-plates").offsetWidth >= 1200) {
+            setboxWidth(300)
+        } if (document.querySelector(".content-plates").offsetWidth >= 600 && document.querySelector(".content-plates").offsetWidth <= 1199) {
             setboxWidth(410)
-        } if (document.querySelector(".content-plates").offsetWidth <=599){
+        } if (document.querySelector(".content-plates").offsetWidth <= 599) {
             setboxWidth(540)
         }
-    },imgIndex)
-    return (
+    }, [])
+    return (        
         <div className="content-popular">
+            {itemToggle === false ? null : <ItemPlate activeItem={()=>toggleItem()} itemData={activeItemData} />}
             <div className="content__controll">
                 <svg onClick={() => moveSlider("left")} className="content_left-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
@@ -96,6 +162,7 @@ function Slider({ dataArr, condition }) {
                 </svg>
             </div>
             <div className="content-plates" style={{ marginRight: `${imgIndex * (boxWidth)}px` }}>
+
                 {data.map(index =>
                     <div key={index.id} >
                         <img src={index.img} alt={index.name} />
@@ -103,7 +170,8 @@ function Slider({ dataArr, condition }) {
                         <p><span>Количество</span><span></span><span>{index.amount} шт.</span></p>
                         <p><span>Вес</span><span></span><span>{index.weight} гр.</span></p>
                         <p>{index.price} ₽</p>
-                        <button>Выбрать</button>
+                        <button onClick={() => toggleItem(index.id,index.img,index.name,index.price,index.weight,index.amount,index.content)}>Выбрать</button>
+
                     </div>
                 )}
             </div>
@@ -141,18 +209,18 @@ function ModalMenu({ activeModal }) {
     )
 }
 
-function Basket({activeBasket}) {
+function Basket({ activeBasket }) {
     return (
         <div className="basket-wrapper">
             <div className="basket-body">
-                <h3><span>Корзина</span><span onClick={()=>activeBasket()}>+</span></h3>
+                <h3><span>Корзина</span><span onClick={() => activeBasket()}>+</span></h3>
                 <div className="basket-list">
                     <div>
                         <div className="basker-list_leftCol">
-                            <img src="./img/susi/megapol.jpg" alt="polis"/>
+                            <img src="./img/susi/megapol.jpg" alt="polis" />
                             <p>Сет мегаполис</p>
                         </div>
-                        <div  className="basker-list_rightCol">
+                        <div className="basker-list_rightCol">
                             <p>3500 ₽</p>
                             <div>
                                 <span>-</span>
@@ -163,10 +231,10 @@ function Basket({activeBasket}) {
                     </div>
                     <div>
                         <div className="basker-list_leftCol">
-                            <img src="./img/susi/megapol.jpg" alt="polis"/>
+                            <img src="./img/susi/megapol.jpg" alt="polis" />
                             <p>Сет мегаполис</p>
                         </div>
-                        <div  className="basker-list_rightCol">
+                        <div className="basker-list_rightCol">
                             <p>3500 ₽</p>
                             <div>
                                 <span>-</span>
@@ -178,7 +246,7 @@ function Basket({activeBasket}) {
                 </div>
                 <hr />
                 <div>
-                    <button>
+                    <button onClick={() => activeBasket()}>
                         Вернутся</button>
                     <button>
                         Оформить заказ
@@ -192,6 +260,7 @@ function Basket({activeBasket}) {
 function App() {
     const [toggleMenu, setToggleMenu] = React.useState(false)
     const [toggleBasket, setToggleBasket] = React.useState(false)
+    const [itemToggle, setItemToggle] = React.useState(false)
     const [data, stData] = React.useState([
         {
             id: 3124,
@@ -354,7 +423,7 @@ function App() {
                                 <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
                             </svg>
                         </div>
-                        <div className="basket" onClick={()=>toggleBasketBody()}>
+                        <div className="basket" onClick={() => toggleBasketBody()}>
                             <p>Корзина</p>
                         </div>
                     </div>
@@ -405,7 +474,7 @@ function App() {
                     </div>
                 </div>
             </div>
-            {data === undefined ? null : <Slider dataArr={data} />}
+            {data === undefined ? null : <Slider dataArr={data}/>}
             <footer>
                 <div className="footer-info">
                     <ul>
