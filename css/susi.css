@@ -962,13 +962,13 @@ header>.nav>ol>li:hover {
 }
 
 .content-plates {
+    justify-content: start;
     width: 100%;
     transition: 0.4s;
     padding-top: 10px;
     padding-bottom: 10px;
     height: 460px;
     display: flex;
-    gap: 10px;
     transition: ease-in-out 0.4s;
 }
 
@@ -977,7 +977,7 @@ header>.nav>ol>li:hover {
     width: 240px;
     height: 450px;
     background-color: black;
-    margin: 10px 20px;
+    margin: 10px 0px;
 }
 
 .content-plates>div>h3 {

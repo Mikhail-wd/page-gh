@@ -1,3 +1,5 @@
+
+
 function Carosel() {
     const [dataCar, setDataCar] = React.useState([
         {
@@ -53,38 +55,38 @@ function Carosel() {
     )
 }
 
-function ItemPlate({activeItem, itemData}) {
-    const [amount,setAmount] = React.useState(1)
-    
-    function setAmountFunc(state){
-        if(state === "inc"){
-            setAmount(amount+1)
-        } if( state === "dic" && amount >1 ){
-            setAmount(amount-1)
+function ItemPlate({ activeItem, itemData }) {
+    const [amount, setAmount] = React.useState(1)
+
+    function setAmountFunc(state) {
+        if (state === "inc") {
+            setAmount(amount + 1)
+        } if (state === "dic" && amount > 1) {
+            setAmount(amount - 1)
         }
     }
     return (
         <div className="item-wrapper">
             <div className="item-body">
                 <div>
-                    <p onClick={()=>activeItem()}>+</p>
+                    <p onClick={() => activeItem()}>+</p>
                 </div>
                 <div>
-                    <img src={itemData.img} alt={itemData.name}/>
+                    <img src={itemData.img} alt={itemData.name} />
                     <div className="item-body__descryption">
                         <h3>{itemData.name}</h3>
-                        <p>{itemData.price*amount} ₽</p>
+                        <p>{itemData.price * amount} ₽</p>
                         <p><span>Количество</span><span></span><span>{itemData.amount} шт.</span></p>
                         <p><span>Вес</span><span></span><span>{itemData.weight} гр.</span></p>
                         <p className="item-body__ingridients">{itemData.content}</p>
                     </div>
                 </div>
                 <div className="item-body__controll">
-                    <button onClick={()=>activeItem()}>Вернутся</button>
+                    <button onClick={() => activeItem()}>Вернутся</button>
                     <div>
-                        <span onClick={()=>setAmountFunc("dic")}>-</span>
+                        <span onClick={() => setAmountFunc("dic")}>-</span>
                         <span>{amount}</span>
-                        <span onClick={()=>setAmountFunc("inc")}>+</span>
+                        <span onClick={() => setAmountFunc("inc")}>+</span>
                     </div>
                     <button>В корзину</button>
                 </div>
@@ -99,7 +101,7 @@ function Slider({ dataArr }) {
     const [data, setData] = React.useState(dataArr)
     const [imgIndex, setImgIndex] = React.useState(0)
     const [itemToggle, setItemToggle] = React.useState(false)
-    const [activeItemData,setActiveItemData] = React.useState(null)
+    const [activeItemData, setActiveItemData] = React.useState(null)
 
     function moveSlider(controll) {
         if (controll === "right") {
@@ -118,16 +120,16 @@ function Slider({ dataArr }) {
 
     }
 
-    function toggleItem(id,img,name,price,weight,amount,content) {
+    function toggleItem(id, img, name, price, weight, amount, content) {
         setActiveItemData(
-            {   
-                id:id,
-                img:img,
-                name:name,
-                price:price,
-                weight:weight,
-                amount:amount,
-                content:content
+            {
+                id: id,
+                img: img,
+                name: name,
+                price: price,
+                weight: weight,
+                amount: amount,
+                content: content
             }
         )
         setItemToggle(!itemToggle)
@@ -148,29 +150,68 @@ function Slider({ dataArr }) {
         } if (document.querySelector(".content-plates").offsetWidth <= 599) {
             setboxWidth(540)
         }
+
+        const swiper = new Swiper('.swiper', {
+            direction: 'horizontal',
+            loop: true,
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 30
+                },
+                500: {
+                    slidesPerView: 2,
+                    spaceBetween: 8
+                },
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 15
+                },
+                840: {
+                    slidesPerView: 3,
+                    spaceBetween: 15
+                },
+                1080: {
+                    slidesPerView: 4,
+                    spaceBetween: 30
+                },
+                1340: {
+                    slidesPerView: 4,
+                    spaceBetween: 20
+                },
+                1440: {
+                    slidesPerView: 5,
+                    spaceBetween: 20
+                }
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
     }, [])
-    return (        
-        <div className="content-popular">
-            {itemToggle === false ? null : <ItemPlate activeItem={()=>toggleItem()} itemData={activeItemData} />}
+    return (
+        <div className="content-popular swiper">
+            {itemToggle === false ? null : <ItemPlate activeItem={() => toggleItem()} itemData={activeItemData} />}
             <div className="content__controll">
-                <svg onClick={() => moveSlider("left")} className="content_left-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="content_left-arrow swiper-button-prev" style={{ marginTop: `8px` }} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
                 </svg>
                 <p>Хиты продаж</p>
-                <svg onClick={() => moveSlider("right")} className="content_right-arrow" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="content_right-arrow swiper-button-next" style={{ marginTop: `8px` }} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
                 </svg>
             </div>
-            <div className="content-plates" style={{ marginRight: `${imgIndex * (boxWidth)}px` }}>
+            <div className="content-plates swiper-wrapper">
 
                 {data.map(index =>
-                    <div key={index.id} >
+                    <div key={index.id} className="swiper-slide">
                         <img src={index.img} alt={index.name} />
                         <h3>{index.name}</h3>
                         <p><span>Количество</span><span></span><span>{index.amount} шт.</span></p>
                         <p><span>Вес</span><span></span><span>{index.weight} гр.</span></p>
                         <p>{index.price} ₽</p>
-                        <button onClick={() => toggleItem(index.id,index.img,index.name,index.price,index.weight,index.amount,index.content)}>Выбрать</button>
+                        <button onClick={() => toggleItem(index.id, index.img, index.name, index.price, index.weight, index.amount, index.content)}>Выбрать</button>
 
                     </div>
                 )}
@@ -474,7 +515,7 @@ function App() {
                     </div>
                 </div>
             </div>
-            {data === undefined ? null : <Slider dataArr={data}/>}
+            {data === undefined ? null : <Slider dataArr={data} />}
             <footer>
                 <div className="footer-info">
                     <ul>
