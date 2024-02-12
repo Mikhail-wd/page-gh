@@ -103,23 +103,6 @@ function Slider({ dataArr }) {
     const [itemToggle, setItemToggle] = React.useState(false)
     const [activeItemData, setActiveItemData] = React.useState(null)
 
-    function moveSlider(controll) {
-        if (controll === "right") {
-            if (imgIndex >= (data.length - 1)) {
-                setImgIndex(0)
-            } else {
-                setImgIndex(imgIndex + 1)
-            }
-        } else {
-            if (imgIndex <= (data.length) && imgIndex != 0) {
-                setImgIndex(imgIndex - 1)
-            } else {
-                setImgIndex(0)
-            }
-        }
-
-    }
-
     function toggleItem(id, img, name, price, weight, amount, content) {
         setActiveItemData(
             {
@@ -143,13 +126,6 @@ function Slider({ dataArr }) {
     }
 
     React.useEffect(() => {
-        if (document.querySelector(".content-plates").offsetWidth >= 1200) {
-            setboxWidth(300)
-        } if (document.querySelector(".content-plates").offsetWidth >= 600 && document.querySelector(".content-plates").offsetWidth <= 1199) {
-            setboxWidth(410)
-        } if (document.querySelector(".content-plates").offsetWidth <= 599) {
-            setboxWidth(540)
-        }
 
         const swiper = new Swiper('.swiper', {
             direction: 'horizontal',
