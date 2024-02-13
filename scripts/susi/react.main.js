@@ -57,7 +57,34 @@ function Carosel() {
 
 function ItemPlate({ activeItem, itemData }) {
     const [amount, setAmount] = React.useState(1)
+    const [local, setLocal] = React.useState(JSON.parse(sessionStorage.getItem("Cart")))
 
+    function addToCart() {
+        if (local === null) {
+            sessionStorage.setItem("Cart", JSON.stringify([{
+                id: itemData.id,
+                name: itemData.name,
+                price: itemData.price,
+                amountItems: amount,
+                img: itemData.img,
+            }]));
+        } else {
+            sessionStorage.setItem("Cart", JSON.stringify(local.concat([{
+                id: itemData.id,
+                name: itemData.name,
+                price: itemData.price,
+                amountItems: amount,
+                img: itemData.img,
+            }])))
+            setLocal(local.concat([{
+                id: itemData.id,
+                name: itemData.name,
+                price: itemData.price,
+                amountItems: amount,
+                img: itemData.img,
+            }]))
+        }
+    }
     function setAmountFunc(state) {
         if (state === "inc") {
             setAmount(amount + 1)
@@ -88,7 +115,7 @@ function ItemPlate({ activeItem, itemData }) {
                         <span>{amount}</span>
                         <span onClick={() => setAmountFunc("inc")}>+</span>
                     </div>
-                    <button>В корзину</button>
+                    <button onClick={() => addToCart()}>В корзину</button>
                 </div>
             </div>
 
@@ -126,7 +153,6 @@ function Slider({ dataArr }) {
     }
 
     React.useEffect(() => {
-
         const swiper = new Swiper('.swiper', {
             direction: 'horizontal',
             loop: true,
@@ -226,42 +252,43 @@ function ModalMenu({ activeModal }) {
     )
 }
 
-function Basket({ activeBasket }) {
+function Basket({ activeBasket, itemsList }) {
+    const [totalToPay, setTotalToPay] = React.useState(0)
+    const [basket, setBasket] = React.useState(JSON.parse(sessionStorage.getItem("Cart")))
+    const [data] = React.useState(itemsList)
+    React.useEffect(() => {
+        if (basket !== null) {
+            let calc = 0
+            for(let x = 0; x < basket.length; x++){
+                calc += basket[x].price*basket[x].amountItems
+            }
+            setTotalToPay(calc)
+        }
+    }, [])
     return (
         <div className="basket-wrapper">
             <div className="basket-body">
                 <h3><span>Корзина</span><span onClick={() => activeBasket()}>+</span></h3>
                 <div className="basket-list">
-                    <div>
-                        <div className="basker-list_leftCol">
-                            <img src="./img/susi/megapol.jpg" alt="polis" />
-                            <p>Сет мегаполис</p>
-                        </div>
-                        <div className="basker-list_rightCol">
-                            <p>3500 ₽</p>
-                            <div>
-                                <span>-</span>
-                                <span>0</span>
-                                <span>+</span>
+                    {basket === null ? "Корзина пуста" : basket.map(index =>
+                        <div key={index.id * Math.random()}>
+                            <div className="basker-list_leftCol">
+                                <img src={index.img} alt={index.name} />
+                                <p>{index.name}</p>
+                            </div>
+                            <div className="basker-list_rightCol">
+                                <p>{index.price * index.amountItems} ₽</p>
+                                <div>
+                                    <span>-</span>
+                                    <span>{index.amountItems}</span>
+                                    <span>+</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <div className="basker-list_leftCol">
-                            <img src="./img/susi/megapol.jpg" alt="polis" />
-                            <p>Сет мегаполис</p>
-                        </div>
-                        <div className="basker-list_rightCol">
-                            <p>3500 ₽</p>
-                            <div>
-                                <span>-</span>
-                                <span>0</span>
-                                <span>+</span>
-                            </div>
-                        </div>
-                    </div>
+                    )}
                 </div>
                 <hr />
+                <p>Всего-то : {totalToPay} ₽</p>
                 <div>
                     <button onClick={() => activeBasket()}>
                         Вернутся</button>
@@ -278,6 +305,8 @@ function App() {
     const [toggleMenu, setToggleMenu] = React.useState(false)
     const [toggleBasket, setToggleBasket] = React.useState(false)
     const [itemToggle, setItemToggle] = React.useState(false)
+    const [localBasket, setLocalBasket] = React.useState(localStorage.getItem("Cart"))
+    const [basket, setBasket] = React.useState(localStorage.getItem("Cart"))
     const [data, stData] = React.useState([
         {
             id: 3124,
@@ -360,7 +389,6 @@ function App() {
             img: "./img/susi/piggyset.jpg"
         }
     ])
-
     function toggleBasketBody() {
         setToggleBasket(!toggleBasket)
         if (toggleBasket === false) {
@@ -381,9 +409,16 @@ function App() {
             body.classList.remove("overflow")
         }
     }
+    React.useEffect(() => {
+        if (basket === null) {
+            sessionStorage.setItem("Cart", null);
+        } else {
+            setLocalBasket(JSON.parse(sessionStorage.getItem("Cart")))
+        }
+    }, [])
     return (
         <>
-            {toggleBasket == false ? null : <Basket activeBasket={() => toggleBasketBody()} />}
+            {toggleBasket == false ? null : <Basket activeBasket={() => toggleBasketBody()} itemsList={data} />}
             {toggleMenu == false ? null : <ModalMenu activeModal={() => toggleMenuBody()} />}
             <header>
                 <div className="logo-header">
