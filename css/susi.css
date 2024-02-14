@@ -282,7 +282,7 @@ body {
 }
 
 .item-body>div>img {
-    width:70%;
+    width: 70%;
 }
 
 .item-body>div>div>h3,
@@ -314,7 +314,8 @@ p {
     justify-content: space-between;
     white-space: nowrap;
 }
-.item-body__descryption>p:nth-child(2){
+
+.item-body__descryption>p:nth-child(2) {
     font-size: 0.9rem;
 }
 
@@ -325,11 +326,13 @@ p {
     border-bottom: dotted 1px var(--main-clr);
 
 }
+
 .item-body__descryption>.item-body__ingridients {
     white-space: normal;
     font-size: 0.65rem;
     word-spacing: 8px;
 }
+
 .item-body__controll {
     display: flex;
     margin-top: 18px;
@@ -341,7 +344,8 @@ p {
     background-color: #c5af81;
     color: black;
 }
-.item-body__controll>button{
+
+.item-body__controll>button {
     cursor: grab;
     color: var(--main-clr);
     font-family: var(--main-font);
@@ -357,23 +361,26 @@ p {
     text-transform: uppercase;
     letter-spacing: 2px;
 }
-.item-body__controll>div:nth-child(2){
+
+.item-body__controll>div:nth-child(2) {
     display: flex;
     justify-content: space-between;
     gap: 10px;
     border: 1px solid var(--btn-bg);
     border-radius: 10px;
     padding: 8px 8px;
-    
+
 }
-.item-body__controll>div:nth-child(2)>span:nth-child(1){
+
+.item-body__controll>div:nth-child(2)>span:nth-child(1) {
     border-right: solid 1px var(--btn-bg);
     text-align: center;
     cursor: grab;
     width: 30px;
     height: 30px;
 }
-.item-body__controll>div:nth-child(2)>span:nth-child(3){
+
+.item-body__controll>div:nth-child(2)>span:nth-child(3) {
     border-left: solid 1px var(--btn-bg);
     text-align: center;
     cursor: grab;
@@ -1052,6 +1059,98 @@ header>.nav>ol>li:hover {
     color: black;
 }
 
+/*OrderDelivery*/
+.delivery-main {
+    margin: 50px 0px;
+    max-width: 88%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.comp-navigarion {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: start;
+    font-size: 0.6rem;
+    color: var(--scn-clr);
+}
+
+.comp-navigarion>.main {
+    color: var(--btn-bg);
+}
+
+.comp-navigarion>.main:hover {
+    cursor: grab;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.delivery-header_info {
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: left
+}
+
+.delivery-main>p {
+    width: 100%;
+    margin: 20px 0px;
+    letter-spacing: normal;
+    font-size: 0.7rem;
+    text-transform: none;
+    font-weight: 400;
+    color: var(--scn-clr);
+}
+
+.delivery-main>ul {
+    width: 100%;
+    margin-left: 40px;
+    list-style: disc;
+    letter-spacing: normal;
+    font-size: 0.7rem;
+    text-transform: none;
+    font-weight: 400;
+    color: var(--scn-clr);
+    display: block;
+}
+
+.delivery-main>ul>li {
+    padding: 7px 0px;
+}
+
+/*MissPage*/
+.miss-page {
+    margin: 50px 0px;
+    width: 88%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap:nowrap;
+    gap: 45px;
+    justify-content: start;
+}
+
+.miss-page_main {
+   border: 1px solid var(--btn-bg);
+   padding: 22px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   border-radius: 10px;
+   background-color: black;
+}
+.miss-page_main>img {
+    width: 70%;
+}
+.miss-page_main>h3{
+    text-transform: uppercase;
+    font-weight: 600;
+    word-spacing: 12px;
+}
 /*Footer*/
 footer {
     color: var(--main-clr);
@@ -1239,17 +1338,21 @@ footer>.footer-info>ul>li:hover:not(:first-child) {
     p {
         font-size: 0.8rem;
     }
+
     .item-body__controll {
         flex-direction: column;
         gap: 20px;
     }
+
     .item-body__controll>button {
         width: 100%;
     }
-    .item-body__controll>button:nth-child(1){
+
+    .item-body__controll>button:nth-child(1) {
         order: 2;
     }
-    .item-body__controll>div:nth-child(2){
+
+    .item-body__controll>div:nth-child(2) {
         float: left;
     }
 }
@@ -1279,7 +1382,8 @@ footer>.footer-info>ul>li:hover:not(:first-child) {
         display: flex;
         flex-direction: column;
     }
-    .item-body > div:nth-child(2) {
+
+    .item-body>div:nth-child(2) {
         flex-direction: column;
         align-items: center;
     }

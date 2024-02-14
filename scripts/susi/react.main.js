@@ -259,8 +259,8 @@ function Basket({ activeBasket, itemsList }) {
     React.useEffect(() => {
         if (basket !== null) {
             let calc = 0
-            for(let x = 0; x < basket.length; x++){
-                calc += basket[x].price*basket[x].amountItems
+            for (let x = 0; x < basket.length; x++) {
+                calc += basket[x].price * basket[x].amountItems
             }
             setTotalToPay(calc)
         }
@@ -300,8 +300,42 @@ function Basket({ activeBasket, itemsList }) {
         </div>
     )
 }
-
+function OrderAndDelivery({pageChange}) {
+    return (
+        <div className="delivery-main">
+            <span className="comp-navigarion"><span className="main" onClick={()=>pageChange()}>Главная</span><span>/</span><span>Заказ и доставка</span></span>
+            <h3 className="delivery-header_info">Доставка и оплата</h3>
+            <p>В Turbo Fish действуют следующие условия доставки:</p>
+            <ul>
+                <li> Все заказы мы принимаем с 10:00 до 23:00 ежедневно</li>
+                <li>Доставим Ваш заказ бесплатно по городу (за исключением некоторых отдаленных районов Тамбова*)</li>
+                <li>Минимальная сумма для бесплатной доставки составляет 600 ₽</li>
+                <li> Вы можете получить Ваш заказ самовывозом со скидкой 10% по адресу:  г.Тамбов</li>
+            </ul>
+            <p>Оплата Вашего заказа возможна следующими методами:</p>
+            <ul>
+                <li>Через терминал курьеру (при помощи банковской карты);</li>
+                <li>Наличными курьеру;</li>
+                <li>Наличными либо через терминал при самовывозе;</li>
+                <li>Когда Вы оплатите заказ - курьер или менеджер выдаст Вам кассовый чек.</li>
+            </ul>
+            <p>* Условия доставки заказа в отдаленные районы вы можете узнать, нажав кнопку ниже.</p>
+        </div>
+    )
+}
+function MissPage({pageChange}) {
+    return (
+        <div className="miss-page">
+            <span className="comp-navigarion"><span className="main" onClick={()=>pageChange()}>Главная</span><span>/</span><span>404 error</span></span>
+            <div className="miss-page_main">
+                <img src="./img/susi/404.jpg"  alt="oops"/>
+                <h3>Страница не доступна</h3>
+            </div>
+        </div>
+    )
+}
 function App() {
+    const [pageSelection, setPageSelection] = React.useState("main")
     const [toggleMenu, setToggleMenu] = React.useState(false)
     const [toggleBasket, setToggleBasket] = React.useState(false)
     const [itemToggle, setItemToggle] = React.useState(false)
@@ -409,6 +443,11 @@ function App() {
             body.classList.remove("overflow")
         }
     }
+    function togglePage(pageName) {
+        setPageSelection(pageName)
+        console.log(pageName)
+    }
+    
     React.useEffect(() => {
         if (basket === null) {
             sessionStorage.setItem("Cart", null);
@@ -425,14 +464,14 @@ function App() {
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" className="logo">
                         <path d="M24.7,34.9a4.35,4.35,0,0,0-6,1.5,4.49,4.49,0,0,0,1.1,6.1,4.35,4.35,0,0,0,6-1.5,4.31,4.31,0,0,0-1.1-6.1m-.4,30.2c12.7-9.3,19.6-28.2,19-41.2C29.2,21.1,14,29.4,2.2,43.2-1.7,67.7,45.6,92.8,81,95.2c10.8.7,22.4,3.2,27.6,14.2,5.1-24.1,23.2-26.2,23.2-26.2-13.1-5.2-29.3,3-29.3,3-15.3,7.4-34.1,4.6-45.3-7.3-18.9-20.1-24-18-24-18C27.6,64.9,24.3,65.1,24.3,65.1ZM57.6,27.8a49.51,49.51,0,0,0-10.5-3.4c.2,10.7-3.8,23.2-10.4,32.8a18.27,18.27,0,0,1,4.3,2c3.6,2.1,5.8,1.1,8.4-1.4A58.57,58.57,0,0,0,62,40C64.1,35.3,65,31.1,57.6,27.8ZM48.9,55.9s11.5-18.4,7.6-26.3C66.9,32.6,57,47.5,48.9,55.9ZM75.5,40.3c-7.2-7-8.4-4.4-9.9-1A60.65,60.65,0,0,1,46.1,62.9a28.33,28.33,0,0,1,2.8,2.3c2.5,2.4,6,2.3,10.1.5A54.89,54.89,0,0,0,75,54.3C78.3,50.9,81.7,46.3,75.5,40.3ZM57.2,64.8s16.2-11.3,17-23.5C78.9,47.4,77,54.5,57.2,64.8ZM96.5,76.6c-3.2-12-6.5-7-9.5-5.4A46.17,46.17,0,0,1,60,76a31.75,31.75,0,0,0,6.7,5.4,36.29,36.29,0,0,0,25.7,4.2C96.7,84.7,97.7,81.2,96.5,76.6ZM71.7,82.5S91,85.1,95,76.1C96.6,82.2,91.8,88.3,71.7,82.5Zm16.4-26c-5.1-8.6-7.4-4.1-9-2.3-6.9,7.9-17.3,13.7-25.9,15a26.62,26.62,0,0,1,2.4,2.3c2.3,2.3,5.1,3,8.4,3a42.13,42.13,0,0,0,20.3-5.3C90.2,66,91.5,62.1,88.1,56.5ZM62.6,73.4S86.3,68,85.1,54.2C91.7,63.8,84.4,72.1,62.6,73.4ZM42.8,17.8c-.2,1-.4,2-.7,3A43.73,43.73,0,0,1,69,30.6c.4-.9.9-1.8,1.4-2.7A46.66,46.66,0,0,0,42.8,17.8M64.5,1.3a6.49,6.49,0,0,0,2.7,5.9,3.44,3.44,0,0,0-3.8,2.2,3.53,3.53,0,0,0,2.2,4.3,3.39,3.39,0,0,0,4.5-1.8,3.28,3.28,0,0,0,.1-1.7A9.86,9.86,0,0,0,74,9.5a4.05,4.05,0,0,0-.3,3.4,3.49,3.49,0,0,0-3.4,2.3,3.67,3.67,0,0,0,2.2,4.3,3.07,3.07,0,0,0,4.2-3.8,22.23,22.23,0,0,0,5-.9,7.11,7.11,0,0,0-1.2,4.3c-3.7.5-6.9,3.7-9.3,7.5A49.15,49.15,0,0,0,43,16.3c.6-4.4.2-9-2.3-11.7a6.91,6.91,0,0,0,1.9-4,19.08,19.08,0,0,0,3.2,3.9,3.09,3.09,0,0,0,.8,5.6,3.66,3.66,0,0,0,4.5-1.8,3.57,3.57,0,0,0-1.1-4,4.37,4.37,0,0,0,2-2.8,8.62,8.62,0,0,0,2.4,3,3,3,0,0,0-1,1.4,3.48,3.48,0,0,0,2.2,4.3,3.48,3.48,0,0,0,4.5-1.8,3.41,3.41,0,0,0-1.5-4.2A7,7,0,0,0,64.5,1.3Z" ></path>
                     </svg>
-                    <h1><span>Turbo fish</span><span>Доставка японской кухни</span></h1>
+                    <h1><span>Turbo fish</span><span >Доставка японской кухни</span></h1>
                 </div>
                 <button className="btn city"><span>Тамбов</span> <span className="arrow-down"><div></div><div></div></span></button>
                 <div className="nav">
                     <ol>
-                        <li><a>доставка и оплата</a></li>
-                        <li><a>отзывы</a></li>
-                        <li><a>контакты</a></li>
+                        <li><a onClick={()=>togglePage("orderAndDelivery")}>доставка и оплата</a></li>
+                        <li><a onClick={()=>togglePage("missing")}>отзывы</a></li>
+                        <li><a onClick={()=>togglePage("missing")}>контакты</a></li>
                     </ol>
                 </div>
                 <div className="media">
@@ -451,7 +490,7 @@ function App() {
                 </div>
             </header>
             <div className="content search">
-                <div className="search-leftCol">
+                {pageSelection === "main" ? <div className="search-leftCol">
                     <h2><div className="burger-menu"><div></div><div></div><div></div></div><span>Меню</span></h2>
                     <ul>
                         <li>Акционные товары</li>
@@ -465,7 +504,7 @@ function App() {
                         <li>Супы</li>
                         <li>Напитки</li>
                     </ul>
-                </div>
+                </div> : null}
                 <div className="search-rightCol">
                     <div className="search-header">
                         <div className="search-bar">
@@ -479,7 +518,7 @@ function App() {
                             <p>Корзина</p>
                         </div>
                     </div>
-                    <div className="tags-search">
+                    {pageSelection === "main" ? <div className="tags-search">
                         <div>#Трава с рисом</div>
                         <div>#Трава с рисом</div>
                         <div>#Трава с рисом</div>
@@ -488,9 +527,9 @@ function App() {
                         <div>#Трава с рисом</div>
                         <div>#Трава с рисом</div>
                         <div>#Трава с рисом</div>
-                    </div>
-                    <Carosel />
-                    <div className="our-options">
+                    </div> : null}
+                    {pageSelection === "main" ? <Carosel /> : null}
+                    {pageSelection === "main" ? <div className="our-options">
                         <div>
                             <div className="our-options__text">
                                 <svg viewBox="0 0 56 56">
@@ -523,37 +562,39 @@ function App() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> : null}
                 </div>
             </div>
-            {data === undefined ? null : <Slider dataArr={data} />}
+            {data === undefined || pageSelection !== "main" ? null : <Slider dataArr={data} />}
+            {pageSelection === "orderAndDelivery" ? <OrderAndDelivery pageChange={()=>togglePage("main")} /> : null}
+            {pageSelection === "missing" ? <MissPage pageChange={()=>togglePage("main")} /> : null}
             <footer>
                 <div className="footer-info">
                     <ul>
-                        <li>Информация</li>
-                        <li><a>О нас</a></li>
-                        <li><a>Доставка и оплата</a></li>
-                        <li><a>Возврат и обмен товаров</a></li>
-                        <li><a>Политика конфиденциальности</a></li>
+                        <li onClick={()=>togglePage("missing")}>Информация</li>
+                        <li onClick={()=>togglePage("missing")}><a>О нас</a></li>
+                        <li onClick={()=>togglePage("orderAndDelivery")}><a >Доставка и оплата</a></li>
+                        <li onClick={()=>togglePage("missing")}><a>Возврат и обмен товаров</a></li>
+                        <li onClick={()=>togglePage("missing")}><a>Политика конфиденциальности</a></li>
                     </ul>
                     <ul>
-                        <li>Служба поддержки</li>
-                        <li><a>Контакты</a></li>
-                        <li><a>Карта сайта</a></li>
+                        <li onClick={()=>togglePage("missing")}>Служба поддержки</li>
+                        <li onClick={()=>togglePage("missing")}><a>Контакты</a></li>
+                        <li onClick={()=>togglePage("missing")}><a>Карта сайта</a></li>
                     </ul>
                     <ul>
-                        <li>Дополнительно</li>
-                        <li><a>Акции</a></li>
-                        <li><a>Вакансии</a></li>
+                        <li onClick={()=>togglePage("missing")}>Дополнительно</li>
+                        <li onClick={()=>togglePage("missing")}><a>Акции</a></li>
+                        <li onClick={()=>togglePage("missing")}><a>Вакансии</a></li>
                     </ul>
                     <ul>
-                        <li>Блог компании</li>
-                        <li><a>Новости</a></li>
-                        <li><a>Полезные статьи</a></li>
-                        <li><a>Рецепты</a></li>
+                        <li onClick={()=>togglePage("missing")}>Блог компании</li>
+                        <li onClick={()=>togglePage("missing")}><a>Новости</a></li>
+                        <li onClick={()=>togglePage("missing")}><a>Полезные статьи</a></li>
+                        <li onClick={()=>togglePage("missing")}><a>Рецепты</a></li>
                     </ul>
                 </div>
-                <p>Turbo Fish @ 2024 <br />Подготовлен Mikhail</p>
+                <p>Turbo Fish @ 2019 <br />Подготовлен Mikhail</p>
             </footer>
         </>
 
