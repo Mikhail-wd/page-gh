@@ -639,7 +639,7 @@ function PageError() {
         <div className="error">
             <BredCrums />
             <div className="error-page container">
-                <img src="./img/dom/404.png" alt="error" />
+                <img src="../img/dom/404.png" alt="error" />
                 <h3>Ошибка 404</h3>
                 <p>Что то пошло не так, пожалуйста попробуйте сново позже.<br />Вожно страница находится на техническом обслуживании или вы задали не правельный адрес.</p>
             </div>
