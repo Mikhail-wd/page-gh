@@ -420,6 +420,8 @@ function BredCrums() {
                 return "О нас"
             case "service":
                 return "Услуги"
+            case "projects":
+                return "Наши проекты"
             default:
                 return "Страница не найдена 404"
         }
@@ -634,6 +636,119 @@ function About() {
     )
 
 }
+function Projects() {
+    const [page, setPage] = React.useState(1)
+    const [layout, setLayout] = React.useState("grid")
+    const [unfilteredFakeFetchData, setUnfilteredFakeFetchData] = React.useState(null)
+    const [fakeFetchData, setFakeFetchData] = React.useState(null)
+
+    function content(value) {
+        const composedArray = value.slice(page * 6 - 6, page * 6)
+        return (
+            composedArray.map(index =>
+                <div key={index.id} className="plc-data-content">
+                    <img src={index.img} alt="house" />
+                    <span>
+                        <h4>{index.name}</h4>
+                        <button>Подробнее</button>
+                    </span>
+                </div>
+            )
+        )
+    }
+
+    function paginationPages(value) {
+        let amountPages = Math.ceil(value.length / 6)
+        let string = []
+        for (let x = 0; x < amountPages; x++) {
+            string.push(x + 1)
+        }
+        return (
+            string.map(index =>
+                <span key={index} onClick={() => setPage(index)} style={page == index ? { backgroundColor: "red" } : null}>{index} </span>
+            )
+        )
+    }
+    async function fakeFetch() {
+        await setTimeout(() => {
+            setUnfilteredFakeFetchData(housesArr)
+            setFakeFetchData(housesArr)
+        }, 3000)
+    }
+
+    React.useEffect(() => {
+        fakeFetch()
+    }, [])
+
+    return (
+        <div className="projects">
+            <BredCrums />
+            <div className="project-content container">
+                <div className="project-left-col">
+                    <div className="plc-controller">
+                        <h3>Готовые проекты домов</h3>
+                        <p>Показано 6 из {housesArr.length}</p>
+                        <div className="list-style">
+                            <span onClick={() => setLayout("list")}>
+                                <img src={layout == "list" ? "./img/dom/list_active.svg" : "./img/dom/list_unactive.svg"} alt="list"
+                                />
+                            </span>
+                            <span onClick={() => setLayout("grid")}>
+                                <img src={layout == "grid" ? "./img/dom/grid_active.svg" : "./img/dom/grid_unactive.svg"} alt="grid"
+                                />
+                            </span>
+                        </div>
+                    </div>
+                    <hr />
+                    {fakeFetchData != null ? null :
+                        <div className="loader">
+                            <img src="./img/dom/loader.svg" />
+                        </div>
+                    }
+                    <div className={layout == "list" ? "plc-data-list" : "plc-data-grid"}>
+                        {fakeFetchData == null ? null : content(fakeFetchData)}
+                    </div>
+                    {fakeFetchData == null ? null :
+                        <div className="plc-pagination">
+                            {page <= 1 ? null : <button onClick={() => setPage(page - 1)}>Назад</button>}
+                            {paginationPages(fakeFetchData)}
+                            {page >= Math.ceil(fakeFetchData.length / 6) ? null : <button onClick={() => setPage(page + 1)}>Следующая</button>}
+                        </div>
+                    }
+                </div>
+                <div className="project-right-col">
+                    <div>
+                        <h3>Категории проектов</h3>
+                        <span></span>
+                        <ol>
+                            <li onClick={() => setFakeFetchData(unfilteredFakeFetchData.filter(index => index.materials == "brick"))}>Дома из кирпича </li>
+                            <li onClick={() => setFakeFetchData(unfilteredFakeFetchData.filter(index => index.materials == "wood"))}>Дома из бруса</li>
+                            <li>Дома из пеноблоков</li>
+                            <li>Каркасные дома</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h3>Этажность</h3>
+                        <span></span>
+                        <ol>
+                            <li onClick={() => setFakeFetchData(unfilteredFakeFetchData.filter(index => index.floors == 1))}>1 этаж</li>
+                            <li onClick={() => setFakeFetchData(unfilteredFakeFetchData.filter(index => index.floors == 2))}>2 этажа</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h3>Площадь</h3>
+                        <span></span>
+                        <ol>
+                            <li onClick={() => setFakeFetchData(unfilteredFakeFetchData.filter(index => index.area <= 80))}>до 80 кв.м</li>
+                            <li onClick={() => setFakeFetchData(unfilteredFakeFetchData.filter(index => index.area > 80 && index.area < 120))}>от 80 кв.м и до 120 кв.м.</li>
+                            <li onClick={() => setFakeFetchData(unfilteredFakeFetchData.filter(index => index.area > 120))}>свыше 120 кв.м.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
 function PageError() {
     return (
         <div className="error">
@@ -658,6 +773,8 @@ function PageSwitcher() {
                 return <About />
             case "service":
                 return <Service />
+            case "projects":
+                return <Projects />
             default:
                 return <PageError />
         }
