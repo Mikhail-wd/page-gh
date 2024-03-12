@@ -1,11 +1,14 @@
 const initialState = {
-    page: "main"
+    page: "main",
+    projectInfo: null
 }
 
 function reducer(state, action) {
     switch (action.type) {
         case "changePage":
-            return { ...state, page: action.payload };
+            return { ...state, page: action.payload, projectInfo: null };
+        case "pageInfo":
+            return { ...state, projectInfo: action.payload };
         default:
             return console.log("error in reducer")
     }
@@ -14,6 +17,7 @@ function reducer(state, action) {
 const Store = React.createContext(null);
 
 function Slider() {
+    const context = React.useContext(Store)
     React.useEffect(() => {
         const swiper = new Swiper('.swiper', {
             direction: 'horizontal',
@@ -58,8 +62,8 @@ function Slider() {
                         <div className="slider-text">
                             <h3>Строим  по цене 1990 годов !</h3>
                             <span>
-                                <button>Наши услуги</button>
-                                <button>О нас</button>
+                                <button onClick={() => context.storeDispatch({ type: "changePage", payload: "service" })}><a href="#logo">Наши услуги</a></button>
+                                <button onClick={() => context.storeDispatch({ type: "changePage", payload: "about" })}><a href="#logo">О нас</a></button>
                             </span>
                         </div>
                     </div>
@@ -68,8 +72,8 @@ function Slider() {
                         <div className="slider-text">
                             <h3>Делаем с душой и огоньком !</h3>
                             <span>
-                                <button>Наши услуги</button>
-                                <button>О нас</button>
+                                <button onClick={() => context.storeDispatch({ type: "changePage", payload: "service" })}><a href="#logo">Наши услуги</a></button>
+                                <button onClick={() => context.storeDispatch({ type: "changePage", payload: "about" })}><a href="#logo">О нас</a></button>
                             </span>
                         </div>
                     </div>
@@ -78,8 +82,8 @@ function Slider() {
                         <div className="slider-text">
                             <h3>Каждая наша работа - шедевр !</h3>
                             <span>
-                                <button>Наши услуги</button>
-                                <button>О нас</button>
+                                <button onClick={() => context.storeDispatch({ type: "changePage", payload: "service" })}><a href="#logo">Наши услуги</a></button>
+                                <button onClick={() => context.storeDispatch({ type: "changePage", payload: "about" })}><a href="#logo">О нас</a></button>
                             </span>
                         </div>
                     </div>
@@ -88,8 +92,8 @@ function Slider() {
                         <div className="slider-text">
                             <h3>Надежда Вениаминовна рекомендует !</h3>
                             <span>
-                                <button>Наши услуги</button>
-                                <button>О нас</button>
+                                <button onClick={() => context.storeDispatch({ type: "changePage", payload: "service" })}><a href="#logo">Наши услуги</a></button>
+                                <button onClick={() => context.storeDispatch({ type: "changePage", payload: "about" })}><a href="#logo">О нас</a></button>
                             </span>
                         </div>
                     </div>
@@ -98,8 +102,8 @@ function Slider() {
                         <div className="slider-text">
                             <h3>Используем только самые лучшие материалы !</h3>
                             <span>
-                                <button>Наши услуги</button>
-                                <button>О нас</button>
+                                <button onClick={() => context.storeDispatch({ type: "changePage", payload: "service" })}><a href="#logo">Наши услуги</a></button>
+                                <button onClick={() => context.storeDispatch({ type: "changePage", payload: "about" })}><a href="#logo">О нас</a></button>
                             </span>
                         </div>
                     </div >
@@ -111,6 +115,7 @@ function Slider() {
     )
 }
 function MainPage() {
+    const context = React.useContext(Store)
     const [slideDown, setSlideDown] = React.useState("mission")
 
     function toggleOpen(string) {
@@ -207,7 +212,7 @@ function MainPage() {
                             </span>
                             <p className="content-hover" >
                                 <div>Строительство коттеджей любых форм и размеров</div>
-                                <button>Подробнее</button>
+                                <button onClick={()=>context.storeDispatch({type:"changePage",payload:"service"})}><a href="#logo">Подробнее</a></button>
                             </p>
                         </div>
                         <div className="content-card-footer">
@@ -222,7 +227,7 @@ function MainPage() {
                             </span>
                             <p className="content-hover" >
                                 <span>Компания «Stoim Kak Mojem» делает возможным сделать правильный выбор при разработке и заливке фундамента.</span>
-                                <button>Подробнее</button>
+                                <button onClick={()=>context.storeDispatch({type:"changePage",payload:"service"})}><a href="#logo">Подробнее</a></button>
                             </p>
                         </div>
                         <div className="content-card-footer">
@@ -237,7 +242,7 @@ function MainPage() {
                             </span>
                             <p className="content-hover" >
                                 <span>Мы покрываем высококачественными материалами крыши жилых домов и хозяйственных построек</span>
-                                <button>Подробнее</button>
+                                <button onClick={()=>context.storeDispatch({type:"changePage",payload:"service"})}><a href="#logo">Подробнее</a></button>
                             </p>
                         </div>
                         <div className="content-card-footer">
@@ -252,7 +257,7 @@ function MainPage() {
                             </span>
                             <p className="content-hover" >
                                 <span>Главная цель разработки документации — создать технически грамотный проект и при этом удовлетворить требования заказчика</span>
-                                <button>Подробнее</button>
+                                <button onClick={()=>context.storeDispatch({type:"changePage",payload:"service"})}><a href="#logo">Подробнее</a></button>
                             </p>
                         </div>
                         <div className="content-card-footer">
@@ -267,7 +272,7 @@ function MainPage() {
                             </span>
                             <p className="content-hover" >
                                 <span>Мы имеем солидный опыт в сфере построения инженерных сетей в коттеджах и загородных домах и предоставляем полный комплекс услуг</span>
-                                <button>Подробнее</button>
+                                <button onClick={()=>context.storeDispatch({type:"changePage",payload:"service"})}><a href="#logo">Подробнее</a></button>
                             </p>
                         </div>
                         <div className="content-card-footer">
@@ -282,7 +287,7 @@ function MainPage() {
                             </span>
                             <p className="content-hover" >
                                 <span>Компания «Stoim Kak Mojem» зарекомендовала себя как надежный партнер в сфере строительства и внутренней отделки домов</span>
-                                <button>Подробнее</button>
+                                <button onClick={()=>context.storeDispatch({type:"changePage",payload:"service"})}><a href="#logo">Подробнее</a></button>
                             </p>
                         </div>
                         <div className="content-card-footer">
@@ -343,7 +348,7 @@ function Header() {
     return (
         <header className="header container rows">
             <div className="header-logo">
-                <img src="./img/dom/logo.svg" alt="logo" />
+                <img src="./img/dom/logo.svg" alt="logo" id="logo" />
             </div>
             <div className="header-phones rows"><img src="./img/dom/phone.svg" alt="phone" /><p>Телефон <br /> <b><a href="tel:+921">+7 (666) 345-044</a>   <a href="tel:+921">+7 101-332-9956</a></b></p></div>
             <div className="header-worktimes rows"><img src="./img/dom/time.svg" alt="time" /><p>Время работы <br /> ПН-ВС : С <b>8:00</b> ДО <b>20:00</b></p></div>
@@ -371,6 +376,7 @@ function Header() {
     )
 }
 function Footer() {
+    const context = React.useContext(Store)
     return (
         <footer className="footer container rows">
             <ul>
@@ -381,14 +387,14 @@ function Footer() {
                 </li>
             </ul>
             <ul>
-                <li>Информация</li>
-                <li>Главная</li>
-                <li>О нас</li>
-                <li>Услуги</li>
-                <li>Новости</li>
-                <li>Галерея</li>
-                <li>Готовые проекты</li>
-                <li>Контакты</li>
+                <li onClick={() => context.storeDispatch({ type: "changePage", payload: "info" })}><a href="#logo">Информация</a></li>
+                <li onClick={() => context.storeDispatch({ type: "changePage", payload: "main" })}><a href="#logo">Главная</a></li>
+                <li onClick={() => context.storeDispatch({ type: "changePage", payload: "about" })}><a href="#logo">О нас</a></li>
+                <li onClick={() => context.storeDispatch({ type: "changePage", payload: "service" })}><a href="#logo">Услуги</a></li>
+                <li onClick={() => context.storeDispatch({ type: "changePage", payload: "news" })}><a href="#logo">Новости</a></li>
+                <li onClick={() => context.storeDispatch({ type: "changePage", payload: "gallery" })}><a href="#logo">Галерея</a></li>
+                <li onClick={() => context.storeDispatch({ type: "changePage", payload: "projects" })}><a href="#logo">Готовые проекты</a></li>
+                <li onClick={() => context.storeDispatch({ type: "changePage", payload: "contacts" })}><a href="#logo">Контакты</a></li>
             </ul>
             <ul>
                 <li>Контакты</li>
@@ -413,17 +419,26 @@ function BredCrums() {
     function currentPage() {
         switch (store.storeState.page) {
             case "main":
-                return "Главная"
+                return (<li><a href="#logo">Главная</a></li>)
             case "contacts":
-                return "Контакты"
+                return (<li><a href="#logo">Контакты</a></li>)
             case "about":
-                return "О нас"
+                return (<li><a href="#logo">О нас</a></li>)
             case "service":
-                return "Услуги"
+                return (<li><a href="#logo">Услуги</a></li>)
             case "projects":
-                return "Наши проекты"
+                if (store.storeState.projectInfo != null) {
+                    return (
+                        <>
+                            <li><a href="#logo" onClick={() => store.storeDispatch({ type: "changePage", payload: "projects" })}>Наши проекты</a></li>
+                            <li><a href="#logo">{store.storeState.projectInfo.name}</a></li>
+                        </>
+                    )
+                } else {
+                    return (<li><a href="#logo">Наши проекты</a></li>)
+                }
             default:
-                return "Страница не найдена 404"
+                return (<li><a href="#logo">Страница не найдена 404</a></li>)
         }
     }
 
@@ -431,7 +446,7 @@ function BredCrums() {
         <div className="crums-body">
             <ul className="crums container">
                 <li><a href="###" onClick={() => store.storeDispatch({ type: "changePage", payload: "main" })}>Главная</a></li>
-                <li><a href="###">{currentPage()}</a></li>
+                {currentPage()}
             </ul>
         </div>
     )
@@ -636,7 +651,60 @@ function About() {
     )
 
 }
-function Projects() {
+function ProjectInfo({ props }) {
+    const context = React.useContext(Store)
+
+    function matherials(value) {
+        switch (value) {
+            case "wood":
+                return (<b>брус</b>)
+            case "brick":
+                return (<b>кирпич</b>)
+            default:
+                return (<b>непонятно что</b>)
+        }
+    }
+    return (
+        <div className="projects-info">
+            <BredCrums />
+            <div className="pi-content container">
+                <img src={props.img} alt="house" />
+                <h3>{props.name}</h3>
+                <span>
+                    Описание
+                </span>
+                <ul>
+                    <li>Количество этажей - {props.floors}.</li>
+                    <li>Жилая площадь - {props.area} кв.м</li>
+                    <li>Материал изготовления - {matherials(props.materials)}</li>
+                </ul>
+                <span>
+                    Расчет кредита
+                </span>
+                <p><b>Требования к клиенту для оформления кредита:</b></p>
+                <ul className="pi-content-list">
+                    <li>Гражданство Российской Федерации</li>
+                    <li>Постоянная регистрация в любом субъекте Российской Федерации</li>
+                    <li>Наличие собственного мобильного, а также контактного и рабочего номера телефона</li>
+                    <li>Возраст от 18 лет</li>
+                </ul>
+                <p><b>Необходимые документы:</b></p>
+                <ul className="pi-content-list">
+                    <li>Паспорт гражданина РФ</li>
+                    <li>Номер СНИЛС</li>
+                </ul>
+                <p><b>Срок действия кредитного решения:</b></p>
+                <ul className="pi-content-list">
+                    <li>24 дня</li>
+                </ul>
+                <button onClick={() => context.storeDispatch({ type: "changePage", payload: "main" })}><a href="#logo">Перейти к офорлению заявки</a></button>
+            </div>
+        </div>
+    )
+}
+
+function Projects(props) {
+    const context = React.useContext(Store)
     const [page, setPage] = React.useState(1)
     const [layout, setLayout] = React.useState("grid")
     const [unfilteredFakeFetchData, setUnfilteredFakeFetchData] = React.useState(null)
@@ -650,7 +718,7 @@ function Projects() {
                     <img src={index.img} alt="house" />
                     <span>
                         <h4>{index.name}</h4>
-                        <button>Подробнее</button>
+                        <button onClick={() => context.storeDispatch({ type: "pageInfo", payload: index })}><a href="#logo">Подробнее</a></button>
                     </span>
                 </div>
             )
@@ -669,6 +737,7 @@ function Projects() {
             )
         )
     }
+
     async function fakeFetch() {
         await setTimeout(() => {
             setUnfilteredFakeFetchData(housesArr)
@@ -686,7 +755,7 @@ function Projects() {
             <div className="project-content container">
                 <div className="project-left-col">
                     <div className="plc-controller">
-                        <h3>Готовые проекты домов</h3>
+                        <h3 id="projects-header">Готовые проекты домов</h3>
                         <p>Показано 6 из {housesArr.length}</p>
                         <div className="list-style">
                             <span onClick={() => setLayout("list")}>
@@ -710,9 +779,9 @@ function Projects() {
                     </div>
                     {fakeFetchData == null ? null :
                         <div className="plc-pagination">
-                            {page <= 1 ? null : <button onClick={() => setPage(page - 1)}>Назад</button>}
+                            {page <= 1 ? null : <button onClick={() => setPage(page - 1)}><a href="#projects-header">Назад</a></button>}
                             {paginationPages(fakeFetchData)}
-                            {page >= Math.ceil(fakeFetchData.length / 6) ? null : <button onClick={() => setPage(page + 1)}>Следующая</button>}
+                            {page >= Math.ceil(fakeFetchData.length / 6) ? null : <button onClick={() => setPage(page + 1)}><a href="#projects-header">Следующая</a></button>}
                         </div>
                     }
                 </div>
@@ -774,7 +843,11 @@ function PageSwitcher() {
             case "service":
                 return <Service />
             case "projects":
-                return <Projects />
+                if (store.storeState.projectInfo != null) {
+                    return <ProjectInfo props={store.storeState.projectInfo} />
+                } else {
+                    return <Projects props={null} />
+                }
             default:
                 return <PageError />
         }
