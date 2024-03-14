@@ -6,7 +6,7 @@ const ctx = canvas.getContext("2d")
 const tank = new Image()
 const fishAmount = []
 const weedAmount = []
-tank.src = "./img/tank.png"
+tank.src = "./img/fishtank/tank.png"
 
 
 class Fish {
