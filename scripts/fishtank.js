@@ -12,11 +12,11 @@ tank.src = "./img/fishtank/tank.png"
 class Fish {
           constructor() {
                     this.fish = new Image()
-                    this.fish.src = `./img/fishtank/fish_${Math.ceil(Math.random() * 6)}.png`
                     this.speedX = (Math.random() * 10) / 2
                     this.direction = Math.ceil(Math.random() * 11)
                     this.x = this.direction <= 5 ? canvas.width + (Math.random() * 11) + 100 : (Math.random() * 11) - 100
                     this.y = Math.random() * canvas.height - 200 <= 0 ? 100 : Math.random() * canvas.height - 200
+                    this.fish.src = this.direction <= 5 ? `./img/fishtank/fish_${Math.ceil(Math.random() * 6)}_left.png` : `./img/fishtank/fish_${Math.ceil(Math.random() * 6)}_right.png`
           }
           move_left() {
                     this.x -= this.speedX
@@ -36,14 +36,14 @@ class Fish {
 
 class Weed {
           constructor() {
-                    this.width = 100*Math.random()+120
+                    this.width = 100 * Math.random() + 120
                     this.weed = new Image()
                     this.weed.src = `./img/fishtank/weed_1.png`
                     this.x = Math.random() * canvas.width
                     this.y = canvas.height - 520
           }
           draw() {
-                    ctx.drawImage(this.weed, this.x, this.y, this.width , 380)
+                    ctx.drawImage(this.weed, this.x, this.y, this.width, 380)
           }
 }
 
