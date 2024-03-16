@@ -44,7 +44,7 @@ class Bubble {
           constructor(speed, positionX) {
                     this.size = Math.random() * 5
                     this.x = positionX
-                    this.y = canvas.height - 200
+                    this.y = canvas.height - 180
                     this.speedX = speed * Math.random() + 2
                     this.round = [
                               4, 0, 2 * Math.PI
@@ -135,9 +135,9 @@ setInterval(() => {
 }, 10000);
 
 setInterval(() => {
-          let positionX = (Math.random() * 6500)
+          let positionX = (Math.random())
           for (let x = 0; x < 15; x++) {
-                    bubles.push(new Bubble((Math.random() * 10) / 2, (positionX + canvas.width) * 0.175))
+                    bubles.push(new Bubble((Math.random() * 10) / 2, (positionX * canvas.width)))
           }
           bubles.slice(0, 15)
 
