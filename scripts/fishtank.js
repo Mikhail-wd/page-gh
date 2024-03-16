@@ -5,11 +5,11 @@ const ctx = canvas.getContext("2d")
 
 const tank = new Image()
 const fishAmount = []
-const weedAmount = []
+const coralsAmount = []
+const coralsAmountBackground = []
 const bubles = []
 const positionX = (Math.random() * 10) / 2
 tank.src = "./img/fishtank/tank.png"
-
 
 class Fish {
           constructor() {
@@ -18,7 +18,7 @@ class Fish {
                               height: 80
                     }
                     this.fish = new Image()
-                    this.speedX = (Math.random() * 10) / 2
+                    this.speedX = Math.ceil((Math.random() * 10) / 2 + 2)
                     this.direction = Math.ceil(Math.random() * 11)
                     this.x = this.direction <= 5 ? canvas.width + (Math.random() * 11) + 100 : (Math.random() * 11) - 100
                     this.y = Math.random() * canvas.height - 200 <= 0 ? 100 : Math.random() * canvas.height - 200
@@ -72,7 +72,7 @@ class Bubble {
                     ctx.strokeStyle = "#ffffff8a"
                     ctx.stroke()
                     ctx.beginPath()
-                    ctx.arc(this.x-3, this.y-3, this.round[0]-this.round[0]/1.5, ...this.round.slice(1,3))
+                    ctx.arc(this.x - 3, this.y - 3, this.round[0] - this.round[0] / 1.5, ...this.round.slice(1, 3))
                     ctx.fillStyle = "#ffffff8a"
                     ctx.fill()
                     this.move_up()
@@ -80,26 +80,29 @@ class Bubble {
           }
 }
 
-class Weed {
+class Coral {
           constructor() {
-                    this.width = 100 * Math.random() + 120
+                    this.width = 350
+                    this.heigth = 350
                     this.weed = new Image()
-                    this.weed.src = `./img/fishtank/weed_1.png`
+                    this.weed.src = `./img/fishtank/coral_${Math.ceil(Math.random() * 3)}.png`
                     this.x = Math.random() * canvas.width
-                    this.y = canvas.height - 520
+                    this.y = canvas.height - 430
           }
           draw() {
-                    ctx.drawImage(this.weed, this.x, this.y, this.width, 380)
+                    ctx.drawImage(this.weed, this.x, this.y, this.width, this.heigth)
           }
 }
 
 for (let x = 0; x < 11; x++) {
           fishAmount.push(new Fish())
 }
-for (let x = 0; x < 5; x++) {
-          weedAmount.push(new Weed())
+for (let x = 0; x < 3; x++) {
+          coralsAmount.push(new Coral())
 }
-
+for (let x = 0; x < 6; x++) {
+          coralsAmountBackground.push(new Coral())
+}
 for (let x = 0; x < 15; x++) {
           bubles.push(new Bubble((Math.random() * 10) / 2, positionX * (canvas.width / 2 + 300)))
 }
@@ -107,20 +110,19 @@ for (let x = 0; x < 15; x++) {
 
 function animate() {
           ctx.drawImage(tank, 0, 0, canvas.width, canvas.height)
-          weedAmount.map(element =>
+          bubles.map(element =>
                     element.draw()
           )
-          bubles.map(element =>
+          coralsAmountBackground.map(element =>
                     element.draw()
           )
           fishAmount.map((element, index) => {
                     element.draw()
           })
-          weedAmount.map(element =>
+          coralsAmount.map(element =>
                     element.draw()
           )
 }
-
 
 setInterval(() => {
           animate()
@@ -131,7 +133,6 @@ setInterval(() => {
                     fishAmount.push(new Fish())
           }
           fishAmount.slice(0, 11)
-
 }, 10000);
 
 setInterval(() => {
