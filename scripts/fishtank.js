@@ -45,9 +45,9 @@ class Bubble {
                     this.size = Math.random() * 5
                     this.x = positionX
                     this.y = canvas.height - 200
-                    this.speedX = speed * Math.random()+2
+                    this.speedX = speed * Math.random() + 2
                     this.round = [
-                              2, 0, 2 * Math.PI
+                              4, 0, 2 * Math.PI
                     ]
           }
           move_up() {
@@ -69,7 +69,11 @@ class Bubble {
           draw() {
                     ctx.beginPath()
                     ctx.arc(this.x, this.y, ...this.round)
-                    ctx.fillStyle = "#77a3e8d4"
+                    ctx.strokeStyle = "#ffffff8a"
+                    ctx.stroke()
+                    ctx.beginPath()
+                    ctx.arc(this.x-3, this.y-3, this.round[0]-this.round[0]/1.5, ...this.round.slice(1,3))
+                    ctx.fillStyle = "#ffffff8a"
                     ctx.fill()
                     this.move_up()
 
@@ -97,7 +101,7 @@ for (let x = 0; x < 5; x++) {
 }
 
 for (let x = 0; x < 15; x++) {
-          bubles.push(new Bubble((Math.random() * 10) / 2, positionX * (canvas.width/2+300)))
+          bubles.push(new Bubble((Math.random() * 10) / 2, positionX * (canvas.width / 2 + 300)))
 }
 
 
@@ -131,10 +135,9 @@ setInterval(() => {
 }, 10000);
 
 setInterval(() => {
-          let positionX = (Math.random() * 7000)
-          console.log(positionX)
+          let positionX = (Math.random() * 6500)
           for (let x = 0; x < 15; x++) {
-                    bubles.push(new Bubble((Math.random() * 10) / 2, (positionX + canvas.width)*0.175))
+                    bubles.push(new Bubble((Math.random() * 10) / 2, (positionX + canvas.width) * 0.175))
           }
           bubles.slice(0, 15)
 
