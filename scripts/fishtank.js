@@ -47,7 +47,7 @@ class Bubble {
                     this.y = canvas.height - 200
                     this.speedX = speed * Math.random()+2
                     this.round = [
-                              1, 0, 2 * Math.PI
+                              2, 0, 2 * Math.PI
                     ]
           }
           move_up() {
@@ -61,9 +61,9 @@ class Bubble {
                     } if (value < 600) {
                               this.round = [8, 0, 2 * Math.PI]
                     } if (value < 400) {
-                              this.round = [12, 0, 2 * Math.PI]
+                              this.round = [9, 0, 2 * Math.PI]
                     } if (value < 200) {
-                              this.round = [19, 0, 2 * Math.PI]
+                              this.round = [11, 0, 2 * Math.PI]
                     }
           }
           draw() {
