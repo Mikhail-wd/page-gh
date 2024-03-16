@@ -7,6 +7,7 @@ const tank = new Image()
 const fishAmount = []
 const weedAmount = []
 const bubles = []
+const positionX = (Math.random() * 10) / 2
 tank.src = "./img/fishtank/tank.png"
 
 
@@ -40,29 +41,29 @@ class Fish {
 }
 
 class Bubble {
-          constructor(x) {
+          constructor(speed, positionX) {
                     this.size = Math.random() * 5
-                    this.x = Math.random() * canvas.width+x
+                    this.x = positionX
                     this.y = canvas.height - 200
-                    this.speedX = 3*Math.random()
+                    this.speedX = speed * Math.random()+2
                     this.round = [
                               1, 0, 2 * Math.PI
                     ]
           }
           move_up() {
                     this.y -= this.speedX
-                    this.x += (Math.random()*10<=5 ? -0.8 : +0.8)
+                    this.x += (Math.random() * 10 <= 5 ? -0.8 : +0.8)
                     this.changeSize(this.y)
           }
           changeSize(value) {
                     if (value < 800) {
-                              this.round = [2, 0, 2 * Math.PI]
+                              this.round = [5, 0, 2 * Math.PI]
                     } if (value < 600) {
                               this.round = [8, 0, 2 * Math.PI]
                     } if (value < 400) {
                               this.round = [12, 0, 2 * Math.PI]
                     } if (value < 200) {
-                              this.round = [24, 0, 2 * Math.PI]
+                              this.round = [19, 0, 2 * Math.PI]
                     }
           }
           draw() {
@@ -94,18 +95,19 @@ for (let x = 0; x < 11; x++) {
 for (let x = 0; x < 5; x++) {
           weedAmount.push(new Weed())
 }
+
 for (let x = 0; x < 15; x++) {
-          bubles.push(new Bubble(Math.random()*10))
+          bubles.push(new Bubble((Math.random() * 10) / 2, positionX * (canvas.width/2+300)))
 }
+
 
 function animate() {
           ctx.drawImage(tank, 0, 0, canvas.width, canvas.height)
           weedAmount.map(element =>
                     element.draw()
           )
-          bubles.map(element => {
+          bubles.map(element =>
                     element.draw()
-          }
           )
           fishAmount.map((element, index) => {
                     element.draw()
@@ -125,13 +127,15 @@ setInterval(() => {
                     fishAmount.push(new Fish())
           }
           fishAmount.slice(0, 11)
-          
+
 }, 10000);
 
 setInterval(() => {
+          let positionX = (Math.random() * 7000)
+          console.log(positionX)
           for (let x = 0; x < 15; x++) {
-                    bubles.push(new Bubble(Math.random()*10))
+                    bubles.push(new Bubble((Math.random() * 10) / 2, (positionX + canvas.width)*0.175))
           }
-          fishAmount.slice(0, 15)
-          
-}, 21000);
+          bubles.slice(0, 15)
+
+}, 3000);
