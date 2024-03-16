@@ -21,7 +21,7 @@ class Fish {
                     this.speedX = Math.ceil((Math.random() * 10) / 2 + 2)
                     this.direction = Math.ceil(Math.random() * 11)
                     this.x = this.direction <= 5 ? canvas.width + (Math.random() * 11) + 100 : (Math.random() * 11) - 100
-                    this.y = Math.random() * canvas.height - 200 <= 0 ? 100 : Math.random() * canvas.height - 200
+                    this.y = Math.random() * canvas.height - 200 <= 0 ? 100 : Math.random() * canvas.height - 230
                     this.fish.src = this.direction <= 5 ? `./img/fishtank/fish_${Math.ceil(Math.random() * 6)}_left.png` : `./img/fishtank/fish_${Math.ceil(Math.random() * 6)}_right.png`
           }
           move_left() {
