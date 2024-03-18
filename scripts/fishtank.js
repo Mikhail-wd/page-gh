@@ -6,6 +6,7 @@ const ctx = canvas.getContext("2d")
 let ttl = 0
 const tank = new Image()
 const crabsAmount = []
+const bubbleTrail = []
 const fishAmount = []
 const coralsAmount = []
 const coralsAmountBackground = []
@@ -64,20 +65,64 @@ class Crab {
                     ctx.drawImage(this.crab, this.x, this.y, this.scale.width, this.scale.height)
                     if (this.direction <= 5) {
                               this.move_left();
-                              this.y += Math.sin(value) * 10 
+                              this.y += Math.sin(value) * 10
                     } else {
                               this.move_right();
-                              this.y += Math.sin(value) * 10 
+                              this.y += Math.sin(value) * 10
                     }
           }
 }
 
+class Submarine {
+          constructor() {
+                    this.bubbleTrailInterval = 200
+                    this.width = 300
+                    this.height = 110
+                    this.submarine = new Image()
+                    this.speedX = Math.ceil((Math.random() * 10) / 1.2)
+                    this.direction = Math.ceil(Math.random() * 10)
+                    this.x = this.direction <= 5 ? canvas.width + (Math.random() * 11) + 200 : (Math.random() * 11) - 200
+                    this.y = Math.random() * canvas.height - 300 <= 0 ? 300 : Math.ceil(Math.random() * canvas.height - 430)
+                    this.submarine.src = this.direction <= 5 ? "./img/fishtank/submarin_left.png" : "./img/fishtank/submarin_right.png"
+          }
+          move_left() {
+                    this.x -= this.speedX
+                    if (this.bubbleTrailInterval <= 1) {
+                              for (let x = 0; x < 3; x++) {
+                                        bubbleTrail.push(new Bubble((Math.random() * 10) / 2, this.x + 280, this.y + 73))
+                              }
+                              this.bubbleTrailInterval += 200
+                    } else (
+                              this.bubbleTrailInterval -= this.speedX + 55
+                    )
+          }
+          move_right() {
+                    this.x += this.speedX
+                    if (this.bubbleTrailInterval <= 0) {
+                              for (let x = 0; x < 3; x++) {
+                                        bubbleTrail.push(new Bubble((Math.random() * 10) / 2, this.x, this.y + 73))
+                              }
+                              this.bubbleTrailInterval += 200
+                    } else (
+                              this.bubbleTrailInterval -= this.speedX + 55
+                    )
+
+          }
+          draw() {
+                    ctx.drawImage(this.submarine, this.x, this.y, this.width, this.height)
+                    if (this.direction <= 5) {
+                              this.move_left();
+                    } else {
+                              this.move_right();
+                    }
+          }
+}
 
 class Bubble {
-          constructor(speed, positionX) {
+          constructor(speed, positionX, positionY = canvas.height - 180) {
                     this.size = Math.random() * 5
                     this.x = positionX
-                    this.y = canvas.height - 180
+                    this.y = positionY
                     this.speedX = speed * Math.random() + 2
                     this.round = [
                               4, 0, 2 * Math.PI
@@ -127,7 +172,7 @@ class Coral {
           }
 }
 for (let x = 0; x < 1; x++) {
-          crabsAmount.push(new Crab())
+          crabsAmount.push(new Submarine())
 }
 for (let x = 0; x < 11; x++) {
           fishAmount.push(new Fish())
@@ -146,11 +191,14 @@ for (let x = 0; x < 15; x++) {
 function animate() {
           ttl += Math.random() * 0.25
           ctx.drawImage(tank, 0, 0, canvas.width, canvas.height)
+          bubbleTrail.map(element =>
+                    element.draw()
+          )
           bubles.map(element =>
                     element.draw()
           )
           crabsAmount.map(element =>
-                    element.draw(ttl)
+                    element.draw()
           )
           coralsAmountBackground.map(element =>
                     element.draw()
@@ -168,10 +216,6 @@ setInterval(() => {
 }, 40)
 
 setInterval(() => {
-          for (let x = 0; x < 1; x++) {
-                    crabsAmount.push(new Crab())
-          }
-          crabsAmount.slice(0, 1)
           for (let x = 0; x < 11; x++) {
                     fishAmount.push(new Fish())
           }
@@ -187,3 +231,10 @@ setInterval(() => {
           bubles.slice(0, 15)
 
 }, 3000);
+
+setInterval(() => {
+          for (let x = 0; x < 1; x++) {
+                    crabsAmount.push(new Submarine())
+          }
+          crabsAmount.slice(0, 1)
+}, 25000)
