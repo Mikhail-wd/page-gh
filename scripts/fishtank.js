@@ -214,7 +214,6 @@ setInterval(() => {
           for (let x = 0; x < 18; x++) {
                     fishAmount.push(new Fish())
           }
-          console.log(fishAmount.length, crabsAmount.length, bubles.length)
 }, 8000);
 
 setInterval(() => {
