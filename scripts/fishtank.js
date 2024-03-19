@@ -14,36 +14,24 @@ const positionX = (Math.random() * 10) / 2
 tank.src = "./img/fishtank/tank.png"
 
 class Fish {
-          constructor() {
-                    this.scale = {
-                              width: 100,
-                              height: 80
-                    }
+          constructor(direction = Math.random() * 11) {
+                    this.width = 100
+                    this.height = 80
                     this.fish = new Image()
-                    this.speedX = Math.ceil((Math.random() * 10) / 2 + 2)
-                    this.direction = Math.ceil(Math.random() * 11)
-                    this.x = this.direction <= 5 ? canvas.width + (Math.random() * 11) + 100 : (Math.random() * 11) - 100
+                    this.speedX = Math.ceil((Math.random() * 11))
+                    this.direction = direction
+                    this.x = this.direction <= 5 ? canvas.width + 250 : -250
                     this.y = Math.random() * canvas.height - 100 <= 0 ? Math.random() * 200 : Math.random() * canvas.height - 230
                     this.fish.src = this.direction <= 5 ? `./img/fishtank/fish_${Math.ceil(Math.random() * 6)}_left.png` : `./img/fishtank/fish_${Math.ceil(Math.random() * 6)}_right.png`
           }
           move_left() {
                     this.x -= this.speedX
-                    fishAmount.map((element, index) => {
-                              if (element.x < -100) {
-                                        fishAmount.splice(index, 1)
-                              }
-                    })
           }
           move_right() {
                     this.x += this.speedX
-                    fishAmount.map((element, index) => {
-                              if (element.x > canvas.width + 100) {
-                                        fishAmount.splice(index, 1)
-                              }
-                    })
           }
           draw() {
-                    ctx.drawImage(this.fish, this.x, this.y, this.scale.width, this.scale.height)
+                    ctx.drawImage(this.fish, this.x, this.y, this.width, this.height)
                     if (this.direction <= 5) {
                               this.move_left();
                     } else {
@@ -88,39 +76,24 @@ class Submarine {
                     this.width = 300
                     this.height = 110
                     this.submarine = new Image()
-                    this.speedX = Math.ceil((Math.random() * 10) / 1.8 + 5)
+                    this.speedX = Math.ceil((Math.random() * 10) / 2 + 3)
                     this.direction = Math.ceil(Math.random() * 10)
-                    this.x = this.direction <= 5 ? canvas.width + (Math.random() * 11) + 200 : (Math.random() * 11) - 200
-                    this.y = Math.random() * canvas.height <= 240 ? 300 : Math.ceil(Math.random() * canvas.height - 320)
+                    this.x = this.direction <= 5 ? canvas.width + (Math.random() * 11) + 300 : (Math.random() * 11) - 300
+                    this.y = Math.random() * canvas.height - 100 <= 0 ? Math.random() * 200 : Math.random() * canvas.height - 230
                     this.submarine.src = this.direction <= 5 ? "./img/fishtank/submarin_left.png" : "./img/fishtank/submarin_right.png"
           }
           move_left() {
                     this.x -= this.speedX
-                    crabsAmount.map((element, index) => {
-                              if (element.x < -300) {
-                                        crabsAmount.splice(index, 1)
-                              }
-                    })
                     if (this.bubbleTrailInterval <= 1) {
                               for (let x = 0; x < 3; x++) {
                                         bubles.push(new Bubble((Math.random() * 10) / 2, this.x + 280, this.y + 73))
                               }
                               this.bubbleTrailInterval += 200
                     } else (
-                              this.bubbleTrailInterval -= this.speedX + 55,
-                              bubles.map((element, index) => {
-                                        if (element.y <= 0) {
-                                                  bubles.splice(index, 1)
-                                        }
-                              })
+                              this.bubbleTrailInterval -= this.speedX + 55
                     )
           }
           move_right() {
-                    crabsAmount.map((element, index) => {
-                              if (element.x > canvas.width) {
-                                        crabsAmount.splice(index, 1)
-                              }
-                    })
                     this.x += this.speedX
                     if (this.bubbleTrailInterval <= 0) {
                               for (let x = 0; x < 3; x++) {
@@ -128,12 +101,7 @@ class Submarine {
                               }
                               this.bubbleTrailInterval += 200
                     } else (
-                              this.bubbleTrailInterval -= this.speedX + 55,
-                              bubles.map((element, index) => {
-                                        if (element.y <= 0) {
-                                                  bubles.splice(index, 1)
-                                        }
-                              })
+                              this.bubbleTrailInterval -= this.speedX + 55
                     )
 
           }
@@ -174,11 +142,6 @@ class Bubble {
                     }
           }
           draw() {
-                    bubles.map((element, index) => {
-                              if (element.y <= 0) {
-                                        bubles.splice(index, 1)
-                              }
-                    })
                     ctx.beginPath()
                     ctx.arc(this.x, this.y, ...this.round)
                     ctx.strokeStyle = "#ffffff8a"
@@ -188,7 +151,6 @@ class Bubble {
                     ctx.fillStyle = "#ffffff8a"
                     ctx.fill()
                     this.move_up()
-
           }
 }
 
@@ -208,7 +170,7 @@ class Coral {
 for (let x = 0; x < 1; x++) {
           crabsAmount.push(new Submarine())
 }
-for (let x = 0; x < 11; x++) {
+for (let x = 0; x < 12; x++) {
           fishAmount.push(new Fish())
 }
 for (let x = 0; x < 3; x++) {
@@ -249,9 +211,10 @@ setInterval(() => {
 }, 42)
 
 setInterval(() => {
-          for (let x = 0; x < 11; x++) {
+          for (let x = 0; x < 18; x++) {
                     fishAmount.push(new Fish())
           }
+          console.log(fishAmount.length, crabsAmount.length, bubles.length)
 }, 8000);
 
 setInterval(() => {
@@ -265,4 +228,22 @@ setInterval(() => {
           for (let x = 0; x < 1; x++) {
                     crabsAmount.push(new Submarine())
           }
-}, 25000)
+}, 20000)
+
+setInterval(() => {
+          bubles.map((element, index) => {
+                    if (element.y < -5) {
+                              bubles.splice(index, 1)
+                    }
+          })
+          fishAmount.map((element, index) => {
+                    if (element.x <= - 300 || element.x >= canvas.width + 300) {
+                              fishAmount.splice(index, 1)
+                    }
+          })
+          crabsAmount.map((element, index) => {
+                    if (element.x <= -510 || element.x >= canvas.width + 20) {
+                              crabsAmount.splice(index, 1)
+                    }
+          })
+}, 10000)
