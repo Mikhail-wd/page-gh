@@ -79,10 +79,10 @@ class Submarine {
                     this.width = 300
                     this.height = 110
                     this.submarine = new Image()
-                    this.speedX = Math.ceil((Math.random() * 10) / 1.2)
+                    this.speedX = Math.ceil((Math.random() * 10) / 1.8 + 5)
                     this.direction = Math.ceil(Math.random() * 10)
                     this.x = this.direction <= 5 ? canvas.width + (Math.random() * 11) + 200 : (Math.random() * 11) - 200
-                    this.y = Math.random() * canvas.height - 300 <= 0 ? 300 : Math.ceil(Math.random() * canvas.height - 430)
+                    this.y = Math.random() * canvas.height <= 240 ? 300 : Math.ceil(Math.random() * canvas.height - 320)
                     this.submarine.src = this.direction <= 5 ? "./img/fishtank/submarin_left.png" : "./img/fishtank/submarin_right.png"
           }
           move_left() {
