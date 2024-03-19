@@ -109,6 +109,7 @@ class Submarine {
 
           }
           draw() {
+                    bubbleTrail.slice(0, 30)
                     ctx.drawImage(this.submarine, this.x, this.y, this.width, this.height)
                     if (this.direction <= 5) {
                               this.move_left();
